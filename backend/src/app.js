@@ -16,13 +16,13 @@ app.use(express.json());
 app.use('/images', express.static(uploadPath));
 
 // servindo arquivos estáticos da pasta dist
-const vueAppPath = path.resolve('../frontend/dist');
-app.use(express.static(vueAppPath));
+const angularAppPath = path.resolve('../frontend/dist/frontend');
+app.use(express.static(angularAppPath));
 
 app.use(routes);
 
-// adicionar uma rota catchall para servir o index.html do Vue para todas as outras rotas
-app.get('*', (req, res) => res.sendFile(path.resolve(vueAppPath, 'index.html')));
+// adicionar uma rota catchall para servir o index.html do Angular para todas as outras rotas
+app.get('*', (req, res) => res.sendFile(path.resolve(angularAppPath, 'index.html')));
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 
