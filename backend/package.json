@@ -1,0 +1,58 @@
+{
+  "name": "node-mongoose",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "db:reset": "node src/database/dbReset.js",
+    "full-dev": "npm run db:reset && npm run dev",
+    "test": "mocha src/tests/**/*$NAME*.test.js --exit",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+  },
+  "keywords": [
+    "template",
+    "node",
+    "mongoose"
+  ],
+  "author": {
+    "name": "Samuel Covalero dos Reis",
+    "email": "reis_samuel@hotmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-config-trybe-backend": "1.0.4",
+    "nodemon": "^2.0.22",
+    "nyc": "^15.1.0",
+    "chai": "4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "4.3.0",
+    "mocha": "9.2.2",
+    "sinon": "13.0.1"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.2.0",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.0",
+    "md5": "^2.3.0",
+    "mongoose": "^7.2.1",
+    "morgan": "^1.10.0",
+    "multer": "1.4.4",
+    "readline-sync": "^1.4.10",
+    "shelljs": "^0.8.5",
+    "socket.io": "4.4.1"
+  }
+}

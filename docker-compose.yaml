@@ -1,0 +1,88 @@
+version: '3.9' # Versão do Docker Compose
+
+services:
+  # Define os serviços (containers) que serão iniciados
+
+  frontend:
+    # Nome do serviço de frontend
+    container_name: our_shop_app_frontend # Nome do container Docker frontend
+    build: ./frontend # Caminho para o Dockerfile do frontend
+    ports:
+      - 8080:8080 # Mapeia a porta 8080 do container para a porta 8080 do host
+    working_dir: /app-frontend # Define o diretório de trabalho dentro do container
+    volumes:
+      - ./frontend:/app-frontend # Mapeia o diretório ./frontend do host para o diretório /app-frontend do container
+    restart: always # Reinicia o container automaticamente se ele parar
+    networks:
+      - our_shop_app_network-back-to-front # Adiciona este serviço à rede especificada
+    depends_on:
+      - backend # Este serviço depende do serviço backend
+
+  backend:
+    # Nome do serviço de backend
+    container_name: our_shop_app_backend # Nome do container Docker backend
+    build: ./backend # Caminho para o Dockerfile do backend
+    ports:
+      - 3001:3001 # Mapeia a porta 3001 do container para a porta 3001 do host
+    working_dir: /app-backend # Define o diretório de trabalho dentro do container
+    volumes:
+      - ./backend/.docker.env:/app-backend/.env # Mapeia o diretório ./backend/.env do host para o diretório /app-backend/.env do container
+    tty: true # Habilita o pseudo-TTY
+    stdin_open: true # Mantém o STDIN aberto mesmo se não anexado
+    user: "1000:1000" # Define o usuário e grupo do container, foi necessário para o docker executar os scripts do package.json. O usuário e grupo 1000 são os padrões do Linux: id -u <seu_usuario> e id -g <seu_usuario> para ver os seus ids
+    command: [ "npm", "run", "dev" ]
+    restart: always # Reinicia o container automaticamente se ele parar
+    env_file:
+      - ./backend/.docker.env # Define o arquivo de variáveis de ambiente
+    # environment:
+    #   # Variáveis de ambiente para o serviço
+    #   APP_PORT: ${APP_PORT}
+    #   JWT_SECRET: ${JWT_SECRET}
+    #   MYSQL_USER: ${MYSQL_USER}
+    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    #   MYSQL_DB: ${MYSQL_DB}
+    #   MYSQL_HOST: db
+    #   MYSQL_PORT: ${MYSQL_PORT}
+    networks:
+      - our_shop_app_network-back-to-front
+      - our_shop_app_network-back-to-bd
+    depends_on:
+      - mongodb
+        # Este serviço depende do serviço db
+        # condition: service_healthy # Só inicia o serviço backend quando o serviço db estiver saudável
+    # cap_add:
+    #   - SYS_NICE # Adiciona capacidades ao container
+
+  mongodb:
+    # Nome do serviço do banco de dados
+    image: mongo:6.0.6 # Imagem do banco de dados
+    container_name: our_shop_app_db # Nome do container Docker db
+    platform: linux/x86_64 # Plataforma do container
+    ports:
+      - 27017:27017 # Mapeia a porta 3306 do container para a porta 3306 do host
+    restart: 'always' # Reinicia o container automaticamente se ele parar
+    volumes:
+      - ./backend/.docker.env:/app-backend/.env # Mapeia o diretório ./backend/.env do host para o diretório /app-backend/.env do container
+    environment:
+      # Variáveis de ambiente para o serviço
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    command: --default-authentication-plugin=mysql_native_password # Define o comando a ser executado ao iniciar o container
+    networks:
+      - our_shop_app_network-back-to-bd # Adiciona este serviço à rede especificada
+    cap_add:
+      - SYS_NICE # Adiciona capacidades ao container
+    expose:
+      - '27017' # Expõe a porta 27017 do container
+    healthcheck:
+      # Verifica se o serviço está saudável
+      test: [ "CMD", "mysqladmin", "ping", "-h", "mongodb" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Caso queira executar um script SQL ao iniciar o container, descomente as linhas abaixo
+    # volumes:
+    #   - ./backend/src/database/database.sql:/docker-entrypoint-initdb.d/database.sql
+
+networks:
+  our_shop_app_network-back-to-front: {}
+  our_shop_app_network-back-to-bd: {}
