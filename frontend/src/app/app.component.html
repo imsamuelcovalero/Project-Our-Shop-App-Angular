@@ -1,12 +1,14 @@
 <!-- Toolbar -->
 <mat-toolbar color="primary" *ngIf="shouldShowHeader">
-  <button mat-button *ngIf="showHomeButton" [disabled]="currentPage === 'home'" (click)="goToHome()">Home</button>
-  <button mat-button *ngIf="showOrdersButton" [disabled]="currentPage === 'ordersHistory'"
-    (click)="goToOrders()">Histórico de Ordens</button>
-  <span class="spacer"></span>
+  <div class="left-items">
+    <button mat-button *ngIf="showHomeButton" [disabled]="currentPage === 'home'" (click)="goToHome()">Home</button>
+    <button mat-button *ngIf="showOrdersButton" [disabled]="currentPage === 'ordersHistory'"
+      (click)="goToOrders()">Histórico de Ordens</button>
+  </div>
   <span>Seja bem-vindo(a) ao Our Shop App, {{ username }}</span>
-  <button mat-button (click)="toggleTheme()">Alterar Tema</button>
-  <button mat-button (click)="logout()">Logout</button>
+  <div class="right-items">
+    <button mat-button (click)="toggleTheme()">Alterar Tema</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </div>
 </mat-toolbar>
-
 <router-outlet></router-outlet>

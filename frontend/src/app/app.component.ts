@@ -7,7 +7,7 @@ import { LocalStorageHelper } from './helpers/localStorage.helper';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: [],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   currentPage = '';
