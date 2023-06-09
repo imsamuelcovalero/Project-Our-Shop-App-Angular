@@ -1,0 +1,30 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header color="primary">
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email ou nome de usuário</mat-label>
+        <input matInput id="identifier" formControlName="identifier" (input)="resetErrorMessage()" required>
+        <mat-error *ngIf="loginForm.get('identifier')?.hasError('required')">
+          Email ou nome de usuário é obrigatório
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" id="password" formControlName="password" (input)="resetErrorMessage()" required>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Senha é obrigatória
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button>
+      </mat-card-actions>
+    </form>
+    <div style="margin-top: 1em; text-align: center;">
+      <p>Não tem uma conta?</p>
+      <button mat-raised-button color="accent" (click)="goToRegister()">Registre-se</button>
+    </div>
+  </mat-card-content>
+</mat-card>

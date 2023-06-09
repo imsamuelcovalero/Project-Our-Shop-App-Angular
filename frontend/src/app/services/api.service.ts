@@ -1,3 +1,4 @@
+// src/app/services/api.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,5 +14,9 @@ export class ApiService {
 
   get(url: string, options?: any): Observable<any> {
     return this.http.get(this.baseURL + url, options);
+  }
+
+  post(url: string, body: any, options?: any): Observable<any> {
+    return this.http.post(this.baseURL + url, body, options);
   }
 }
