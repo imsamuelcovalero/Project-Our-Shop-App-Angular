@@ -62,7 +62,6 @@ const createNewUser = async (userData) => {
 
   // segundo encripta a senha com o bcrypt
   const hashedPassword = await bcrypt.hash(password, 10);
-  console.log('hashedPassword', hashedPassword);
 
   const newUser = await User.create({
     name,

@@ -1,9 +1,8 @@
 // src/app/services/error.service.ts
-
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { IAxiosError } from '../../interfaces/axios-error.interface';
-import { ToastrService } from 'ngx-toastr'; // substituir pelo seu serviço de toasts
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +13,14 @@ export class ErrorService {
   handleError(error: unknown, customErrorMessage?: string): string {
     console.error(error);
 
-    const axiosError = error as IAxiosError;
     let errorMessage = customErrorMessage || 'Ocorreu um erro desconhecido';
 
-    if (axiosError.response && axiosError.response.data && axiosError.response.data.message) {
-      errorMessage = axiosError.response.data.message;
-    } else if (axiosError.response) {
-      errorMessage = axiosError.response.data?.message || axiosError.response.statusText || 'Ocorreu um erro desconhecido';
-    } else if (axiosError.message) {
-      errorMessage = axiosError.message;
+    const httpError = error as HttpErrorResponse;
+
+    if (httpError.error?.message) {
+      errorMessage = httpError.error.message;
+    } else if (httpError.message) {
+      errorMessage = httpError.message;
     }
 
     this.toastr.error(errorMessage);
