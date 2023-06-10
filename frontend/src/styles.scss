@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-// importe o toastr css
+@import '@mdi/font/css/materialdesignicons.min.css';
 @import '../node_modules/ngx-toastr/toastr.css';
 
 html,
@@ -11,4 +11,13 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
 }

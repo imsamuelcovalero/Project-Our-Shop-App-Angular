@@ -2,6 +2,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
+
+interface HttpOptions {
+  headers?: HttpHeaders | { [header: string]: string | string[] };
+  observe?: 'body';
+  params?: HttpParams | { [param: string]: string | string[] };
+  reportProgress?: boolean;
+  responseType?: 'json';
+  withCredentials?: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +22,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  get(url: string, options?: any): Observable<any> {
-    return this.http.get(this.baseURL + url, options);
+  get<T>(url: string, options?: HttpOptions): Observable<T> {
+    return this.http.get<T>(this.baseURL + url, options);
   }
 
-  post(url: string, body: any, options?: any): Observable<any> {
-    return this.http.post(this.baseURL + url, body, options);
+  post<T>(url: string, body: any, options?: HttpOptions): Observable<T> {
+    return this.http.post<T>(this.baseURL + url, body, options);
   }
 }

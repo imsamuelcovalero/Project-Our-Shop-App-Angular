@@ -5,6 +5,16 @@ import { ApiService } from '../services/api.service';
 import { LocalStorageHelper } from '../helpers/localStorage.helper';
 import { LoginValidator } from '../validators/login.validator';
 import { ErrorService } from '../services/error.service';
+import { ToastrService } from 'ngx-toastr';
+// import { IUserResponse } from '../../interfaces/user-response.interface';
+
+export interface IUserResponse {
+  token: string;
+  id: string;
+  email: string;
+  username: string;
+  role: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -20,7 +30,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private router: Router,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private toastr: ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', LoginValidator.identifierRules()],
@@ -34,8 +45,8 @@ export class LoginComponent {
 
   submitForm() {
     if (this.loginForm.valid) {
-      this.apiService.post('/login', this.loginForm.value).subscribe(
-        data => {
+      this.apiService.post<IUserResponse>('/login', this.loginForm.value).subscribe({
+        next: data => {
           LocalStorageHelper.saveUserInfo({
             token: data.token,
             id: data.id,
@@ -43,12 +54,13 @@ export class LoginComponent {
             username: data.username,
             role: data.role
           });
-          this.router.navigate(['/home']);
+          this.toastr.success('Login bem-sucedido');
+          setTimeout(() => this.router.navigate(['/home']), 1500);
         },
-        error => {
-          this.errorMessage = this.errorService.handleError(error, 'Falha no login.');
+        error: error => {
+          this.errorService.handleError(error, 'Falha no login. Tente novamente.');
         }
-      );
+      });
     }
   }
 

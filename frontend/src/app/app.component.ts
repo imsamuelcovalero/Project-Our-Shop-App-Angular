@@ -24,6 +24,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.username = LocalStorageHelper.getUserInfo().username || '';
+
     this.setCurrentPage(this.router.url);
   }
 

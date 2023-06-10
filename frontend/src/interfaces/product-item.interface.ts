@@ -1,5 +1,5 @@
 // src/interfaces/cart-item.interface.ts
-export interface ICartItem {
+export interface IProductItem {
   imageUrl: string;
   _id: string;
   name: string;

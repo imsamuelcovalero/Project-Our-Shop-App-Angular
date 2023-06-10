@@ -1,11 +1,11 @@
 <mat-card class="mat-elevation-z8">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
   <mat-card-header color="primary">
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
       <mat-form-field appearance="outline">
         <mat-label>Email ou nome de usuário</mat-label>

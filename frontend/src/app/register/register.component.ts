@@ -38,7 +38,7 @@ export class RegisterComponent {
 
   submitForm() {
     if (this.registerForm.valid) {
-      this.apiService.post('/register', this.registerForm.value).subscribe({
+      this.apiService.post<{ message: string }>('/register', this.registerForm.value).subscribe({
         next: response => {
           this.toastr.success(response.message);
           this.successMessage = response.message;

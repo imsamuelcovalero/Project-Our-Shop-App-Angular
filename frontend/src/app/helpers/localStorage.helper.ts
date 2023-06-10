@@ -1,6 +1,6 @@
 // src/app/helpers/localStorage.helper.ts
 import { IUserInfo } from '../../interfaces/user-info.interface';
-import { ICartItem } from '../../interfaces/cart-item.interface';
+import { IProductItem } from '../../interfaces/product-item.interface';
 
 export class LocalStorageHelper {
   static getCart() {
@@ -23,7 +23,7 @@ export class LocalStorageHelper {
     return userInfo ? JSON.parse(userInfo) : {};
   }
 
-  static saveCart(cartItems: ICartItem[]) {
+  static saveCart(cartItems: IProductItem[]) {
     const itemsWithQuantity = cartItems.filter((item) => item.quantity > 0);
     localStorage.setItem('ourShopCartItems', JSON.stringify(itemsWithQuantity));
   }
