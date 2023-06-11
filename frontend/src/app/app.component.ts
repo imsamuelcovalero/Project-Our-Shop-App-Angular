@@ -49,7 +49,7 @@ export class AppComponent {
   }
 
   goToOrders() {
-    this.router.navigate(['/ordersHistory']);
+    this.router.navigate(['/orders-history']);
   }
 
   toggleTheme() {

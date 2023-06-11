@@ -1,4 +1,4 @@
-// File: checkout.component.ts
+// File: src/app/checkout/checkout.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';

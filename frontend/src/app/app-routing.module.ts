@@ -5,15 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-// import { OrdersHistoryViewComponent } from './views/orders-history-view/orders-history-view.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'checkout', component: CheckoutComponent }
-  // { path: 'ordersHistory', component: OrdersHistoryViewComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'orders-history', component: OrdersHistoryComponent }
 ];
 
 @NgModule({

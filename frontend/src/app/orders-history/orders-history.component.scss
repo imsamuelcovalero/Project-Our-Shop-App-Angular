@@ -1,0 +1,74 @@
+/* File: src/app/orders-history/orders-history.component.scss */
+.order-history-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-history-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.order-history-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-history-title {
+  width: 100%;
+  text-align: flex-start;
+  width: 80%;
+}
+
+.orders-container {
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.order-table {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.order-table th.text-center {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-table th,
+.order-table td {
+  text-align: center;
+  padding: 5px;
+}
+
+.cashback-summary {
+  width: 100%;
+  max-height: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-right: 8px;
+}
+
+.cashback {
+  display: flex;
+  height: 10px !important;
+  gap: 8px;
+}
+
+.error-message {
+  color: red;
+}

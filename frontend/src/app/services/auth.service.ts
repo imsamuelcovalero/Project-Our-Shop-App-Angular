@@ -1,6 +1,10 @@
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { IAxiosError } from '../../interfaces/axios-error.interface';
+import { IHttpError } from '../../interfaces/http-error.interface';
+import { LocalStorageHelper } from '../helpers/localStorage.helper';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +13,23 @@ export class AuthService {
 
   constructor(private api: ApiService) { }
 
-  async authenticateUser() {
-    const userInfo = localStorage.getItem('userInfo');
+  authenticateUser(): Observable<void> {
+    const { token } = LocalStorageHelper.getUserInfo();
+    console.log('userInfo', token);
 
-    if (!userInfo) {
-      throw new Error('Não foi possível autenticar o usuário');
+    if (!token) {
+      return throwError(() => new Error('Não foi possível autenticar o usuário'));
     }
 
-    const { token } = JSON.parse(userInfo);
-
-    try {
-      await this.api.get('/login/me', { headers: { Authorization: token } }).toPromise();
-    } catch (error: unknown) {
-      const axiosError = error as IAxiosError;
-      let errorMsg = 'Não foi possível autenticar o usuário';
-      if (axiosError.response && axiosError.response.data && axiosError.response.data.message) {
-        errorMsg = axiosError.response.data.message;
-      }
-      throw new Error(errorMsg);
-    }
+    return this.api.get('/login/me', { headers: { Authorization: token } }).pipe(
+      catchError((error: IHttpError) => {
+        let errorMsg = 'Não foi possível autenticar o usuário';
+        if (error.response && error.response.data && error.response.data.message) {
+          errorMsg = error.response.data.message;
+        }
+        return throwError(() => new Error(errorMsg));
+      }),
+      map(() => undefined) // Este operador 'map' é necessário para converter o resultado da chamada da API em um Observable<void>
+    );
   }
 }
