@@ -1,0 +1,73 @@
+.order-table {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.order-table th {
+  padding: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-table td {
+  text-align: center;
+  padding: 5px;
+}
+
+.totals-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.total {
+  display: flex;
+  margin-right: 65px;
+}
+
+.cashback {
+  display: flex;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.pickup-section {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 80%;
+}
+
+.pickup-options-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pickup-option-item {
+  padding: 5px;
+}
+
+.pickup-option {
+  text-align: left;
+  width: 70%;
+  margin: auto;
+}
+
+.finalize-order-button {
+  display: block;
+  margin: 20px auto;
+  text-align: right;
+}
+
+.return-home-button {
+  align-self: flex-start;
+  margin: 20px;
+}
+
+.error-message {
+  color: red;
+}

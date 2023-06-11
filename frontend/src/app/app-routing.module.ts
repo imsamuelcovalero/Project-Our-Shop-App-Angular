@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-// import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 // import { OrdersHistoryViewComponent } from './views/orders-history-view/orders-history-view.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  // { path: 'checkout', component: CheckoutViewComponent },
+  { path: 'checkout', component: CheckoutComponent }
   // { path: 'ordersHistory', component: OrdersHistoryViewComponent },
 ];
 

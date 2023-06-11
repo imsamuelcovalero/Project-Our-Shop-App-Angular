@@ -55,7 +55,7 @@ export class LoginComponent {
             role: data.role
           });
           this.toastr.success('Login bem-sucedido');
-          setTimeout(() => this.router.navigate(['/home']), 1500);
+          setTimeout(() => this.router.navigate(['/home']), 1000);
         },
         error: error => {
           this.errorService.handleError(error, 'Falha no login. Tente novamente.');

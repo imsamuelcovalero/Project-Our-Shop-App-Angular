@@ -1,0 +1,85 @@
+<!-- File: src/app/checkout.component.html -->
+<mat-card class="checkout-page">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="checkout-wrapper">
+    <div class="checkout-content">
+      <h1 class="checkout-title">Finalizar Pedido</h1>
+      <div class="order-section">
+        <mat-table [dataSource]="products" class="order-table">
+          <ng-container matColumnDef="item">
+            <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+            <mat-cell *matCellDef="let element; index as i"> {{i + 1}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="descricao">
+            <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="quantidade">
+            <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.quantity }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="preco">
+            <mat-header-cell *matHeaderCellDef> Valor Unitário </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ formatPrice(element.price) }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="subtotal">
+            <mat-header-cell *matHeaderCellDef> Sub Total </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ formatPrice(element.price * element.quantity) }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="remover">
+            <mat-header-cell *matHeaderCellDef> Remover Item </mat-header-cell>
+            <mat-cell *matCellDef="let element; index as i">
+              <button mat-button color="warn" (click)="removeFromCart(i)">REMOVER</button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div class="totals-section">
+          <div class="total">
+            <span>Total:</span>
+            <span>{{ formatPrice(totalPrice) }}</span>
+          </div>
+          <div class="cashback">
+            <span>Saldo de Cashback:</span>
+            <span>{{ formatPrice(cashbackValue) }}</span>
+            <mat-checkbox name="useCashback" [(ngModel)]="useCashback" (change)="updateTotalPrice()"
+              [disabled]="totalPrice === 0">
+              Utilizar
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="pickup-title">Local de Retirada</h1>
+      <div class="pickup-section">
+        <h3>Selecione um local para retirar:</h3>
+        <div class="pickup-options-list">
+          <mat-radio-group name="selectedLocation" [(ngModel)]="selectedLocation">
+            <div *ngFor="let location of locations; index as i" class="pickup-option-item">
+              <mat-radio-button class="pickup-option" [value]="location.id">
+                {{ location.name }} - {{ location.address }}
+              </mat-radio-button>
+            </div>
+          </mat-radio-group>
+          <button mat-raised-button (click)="finalizeOrder()" [disabled]="!selectedLocation"
+            class="finalize-order-button">
+            FINALIZAR PEDIDO
+          </button>
+        </div>
+      </div>
+
+      <button mat-raised-button (click)="goToHome()" class="return-home-button">VOLTAR</button>
+
+    </div>
+  </div>
+</mat-card>
