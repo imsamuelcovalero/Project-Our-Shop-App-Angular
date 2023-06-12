@@ -46,10 +46,11 @@ export class HomeComponent implements OnInit {
   }
 
   inputQuantity(product: IProductItem): void {
-    const updatedProduct = { ...product };
-    if (updatedProduct.quantity < 0) {
-      updatedProduct.quantity = 0;
+    let quantity = product.quantity;
+    if (isNaN(quantity) || quantity < 0) {
+      quantity = 0;
     }
+    const updatedProduct = { ...product, quantity };
     this.updateCart(updatedProduct);
   }
 
@@ -63,13 +64,13 @@ export class HomeComponent implements OnInit {
     const productIndex = this.products.findIndex(
       (product) => product._id === updatedProduct._id
     );
-    if (updatedProduct.quantity > 0) {
+    if (productIndex !== -1) {
       this.products[productIndex] = updatedProduct;
-    } else {
-      this.products.splice(productIndex, 1);
     }
 
-    LocalStorageHelper.saveCart(this.products);
+    const cartItems = this.products.filter(product => product.quantity > 0);
+    LocalStorageHelper.saveCart(cartItems);
+
     this.totalPrice = this.products.reduce(
       (total, product) => total + product.price * product.quantity,
       0

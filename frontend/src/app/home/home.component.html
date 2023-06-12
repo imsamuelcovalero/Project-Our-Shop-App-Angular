@@ -18,7 +18,7 @@
             <label class="quantity-label" [attr.for]="'quantity_' + product.name">
               Quantidade
               <input [id]="'quantity_' + product.name" class="quantity-input" [(ngModel)]="product.quantity" min="0"
-                type="number" (input)="inputQuantity(product)" />
+                type="number" (change)="inputQuantity(product)" />
             </label>
             <button class="btn quantity-button" (click)="incrementQuantity(product)">+</button>
           </div>
