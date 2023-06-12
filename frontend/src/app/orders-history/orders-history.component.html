@@ -9,7 +9,7 @@
       <div class="cashback-summary">
         <div class="cashback">
           <span class="cashback-label">Saldo atual de Cashback:</span>
-          <span>{{ formatPrice(cashbackValue) }}</span>
+          <span>R$ {{ formatPrice(cashbackValue) }}</span>
         </div>
       </div>
       <h1 class="order-history-title">Histórico de Ordens</h1>
@@ -27,12 +27,12 @@
 
           <ng-container matColumnDef="orderValue">
             <th mat-header-cell *matHeaderCellDef>Valor da Ordem</th>
-            <td mat-cell *matCellDef="let order">{{ formatPrice(order.totalPrice) }}</td>
+            <td mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice) }}</td>
           </ng-container>
 
           <ng-container matColumnDef="cashbackValue">
             <th mat-header-cell *matHeaderCellDef>Valor de Cashback</th>
-            <td mat-cell *matCellDef="let order">{{ formatPrice(order.totalPrice * 0.01) }}</td>
+            <td mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice * 0.01) }}</td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

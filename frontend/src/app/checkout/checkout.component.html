@@ -26,12 +26,12 @@
 
           <ng-container matColumnDef="preco">
             <mat-header-cell *matHeaderCellDef> Valor Unitário </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ formatPrice(element.price) }} </mat-cell>
+            <mat-cell *matCellDef="let element"> R$ {{ formatPrice(element.price) }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="subtotal">
             <mat-header-cell *matHeaderCellDef> Sub Total </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ formatPrice(element.price * element.quantity) }} </mat-cell>
+            <mat-cell *matCellDef="let element"> R$ {{ formatPrice(element.price * element.quantity) }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="remover">
@@ -47,11 +47,11 @@
         <div class="totals-section">
           <div class="total">
             <span>Total:</span>
-            <span>{{ formatPrice(totalPrice) }}</span>
+            <span>R$ {{ formatPrice(totalPrice) }}</span>
           </div>
           <div class="cashback">
             <span>Saldo de Cashback:</span>
-            <span>{{ formatPrice(cashbackValue) }}</span>
+            <span>R$ {{ formatPrice(cashbackValue) }}</span>
             <mat-checkbox name="useCashback" [(ngModel)]="useCashback" (change)="updateTotalPrice()"
               [disabled]="totalPrice === 0">
               Utilizar

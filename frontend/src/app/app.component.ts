@@ -1,8 +1,9 @@
 // src/app/app.component.ts
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { LocalStorageHelper } from './helpers/localStorage.helper';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,11 @@ import { LocalStorageHelper } from './helpers/localStorage.helper';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  darkTheme = false;
   currentPage = '';
   username = '';
 
-  constructor(private router: Router) {
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     // ouça as mudanças na rota
     this.router.events.pipe(
       filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
@@ -23,9 +25,18 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.username = LocalStorageHelper.getUserInfo().username || '';
+    const username = LocalStorageHelper.getUserInfo().username || '';
+    console.log('username', username);
+    this.username = username;
 
     this.setCurrentPage(this.router.url);
+
+    const localTheme = localStorage.getItem('ourShopTheme');
+    if (localTheme) {
+      this.darkTheme = localTheme === 'dark';
+    }
+
+    this.setTheme();
   }
 
   setCurrentPage(path: string) {
@@ -53,11 +64,28 @@ export class AppComponent {
   }
 
   toggleTheme() {
-    // A lógica para alternar o tema vai aqui
+    this.darkTheme = !this.darkTheme;
+    localStorage.setItem('ourShopTheme', this.darkTheme ? 'dark' : 'light');
+    setTimeout(() => {
+      this.setTheme();
+      console.log('toggleTheme', this.darkTheme);
+    }, 0);
+  }
+
+  setTheme() {
+    const body = this.document.body;
+    if (this.darkTheme) {
+      body.classList.add('dark-theme');
+      body.classList.remove('light-theme');
+    } else {
+      body.classList.add('light-theme');
+      body.classList.remove('dark-theme');
+    }
   }
 
   logout() {
     localStorage.removeItem('userOurShop');
+    // localStorage.removeItem('ourShopTheme');
     this.router.navigate(['/login']);
   }
 }

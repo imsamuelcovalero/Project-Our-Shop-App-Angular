@@ -1,4 +1,5 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// File: app.component.scss
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .mat-toolbar {
   display: flex;
@@ -14,3 +15,11 @@
 .spacer {
   flex: 1;
 }
+
+// .light-theme {
+//   background-color: yellow;
+// }
+
+// .dark-theme {
+//   background-color: green;
+// }

@@ -19,9 +19,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table'; // import MatTableModule
-import { MatRadioModule } from '@angular/material/radio'; // import MatRadioModule
-import { MatCheckboxModule } from '@angular/material/checkbox'; // import MatCheckboxModule
+import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -49,9 +49,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatTableModule, // add MatTableModule
-    MatRadioModule, // add MatRadioModule
-    MatCheckboxModule, // add MatCheckboxModule
+    MatTableModule,
+    MatRadioModule,
+    MatCheckboxModule,
 
     ToastrModule.forRoot({
       timeOut: 10000,
