@@ -68,7 +68,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     currentProducts.splice(index, 1);
-    const newProducts = currentProducts.slice();  // Create a new reference
+    const newProducts = currentProducts.slice();  // Para atualizar o BehaviorSubject e refletir na tela
     this.products.next(newProducts);
     LocalStorageHelper.saveCart(newProducts);
     LocalStorageHelper.saveTotalPrice(this.totalPrice);

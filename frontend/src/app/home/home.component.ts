@@ -68,8 +68,7 @@ export class HomeComponent implements OnInit {
       this.products[productIndex] = updatedProduct;
     }
 
-    const cartItems = this.products.filter(product => product.quantity > 0);
-    LocalStorageHelper.saveCart(cartItems);
+    LocalStorageHelper.saveCart(this.products);
 
     this.totalPrice = this.products.reduce(
       (total, product) => total + product.price * product.quantity,
