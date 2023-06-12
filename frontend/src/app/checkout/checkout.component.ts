@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 import { ErrorService } from '../services/error.service';
 import { LocalStorageHelper } from '../helpers/localStorage.helper';
 import { FormatHelper } from '../helpers/format.helper';
@@ -12,6 +13,7 @@ import { FormatOrderDataHelper } from '../helpers/formatOrderData.helper';
 import { ILocation, IServerLocation } from '../../interfaces/location.interface';
 import { IProductItem } from '../../interfaces/product-item.interface';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -19,7 +21,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  products: IProductItem[] = [];
+  products = new BehaviorSubject<IProductItem[]>([]);
   totalPrice = 0;
   originalTotalPrice = 0;
   cashbackValue = 0;
@@ -33,6 +35,7 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
+    private authService: AuthService,
     private errorService: ErrorService,
     private toastr: ToastrService
   ) { }
@@ -52,19 +55,22 @@ export class CheckoutComponent implements OnInit {
   }
 
   removeFromCart(index: number): void {
-    const productCost = this.products[index].price * this.products[index].quantity;
+    const currentProducts = this.products.value;
+    const productCost = currentProducts[index].price * currentProducts[index].quantity;
 
     this.totalPrice = CalculateNewTotalHelper.calculate({ total: this.totalPrice, cost: productCost });
     this.originalTotalPrice = CalculateNewTotalHelper.calculate({ total: this.originalTotalPrice, cost: productCost });
 
-    if (this.products.length === 1 && this.useCashback) {
+    if (currentProducts.length === 1 && this.useCashback) {
       this.cashbackValue = this.originalCashbackValue;
       LocalStorageHelper.saveCashbackValue(this.cashbackValue);
       this.useCashback = false;
     }
 
-    this.products.splice(index, 1);
-    LocalStorageHelper.saveCart(this.products);
+    currentProducts.splice(index, 1);
+    const newProducts = currentProducts.slice();  // Create a new reference
+    this.products.next(newProducts);
+    LocalStorageHelper.saveCart(newProducts);
     LocalStorageHelper.saveTotalPrice(this.totalPrice);
   }
 
@@ -103,7 +109,7 @@ export class CheckoutComponent implements OnInit {
       user: user,
       totalPrice: this.totalPrice,
       selectedLocation: this.selectedLocation,
-      products: this.products,
+      products: this.products.value,
       cashbackValue: newCashbackValue,
     });
 
@@ -113,8 +119,8 @@ export class CheckoutComponent implements OnInit {
         this.cashbackValue = newCashbackValue;
         this.originalCashbackValue = newCashbackValue;
         LocalStorageHelper.saveCashbackValue(this.originalCashbackValue);
-        this.products = [];
-        LocalStorageHelper.saveCart(this.products);
+        this.products.next([]);
+        LocalStorageHelper.saveCart([]);
         this.totalPrice = 0;
         LocalStorageHelper.saveTotalPrice(this.totalPrice);
         this.useCashback = false;
@@ -128,13 +134,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   private loadUserInfo(): void {
-    const { token } = LocalStorageHelper.getUserInfo();
-    this.apiService.get<{ cashbackValue: number }>('/login/me', { headers: { Authorization: token } }).subscribe({
-      next: (result) => {
-        this.cashbackValue = result.cashbackValue;
-        this.originalCashbackValue = result.cashbackValue;
+    console.log('aqui');
+
+    this.authService.authenticateUser().subscribe({
+      next: () => {
+        this.cashbackValue = LocalStorageHelper.getCashbackValue();
+        this.originalCashbackValue = LocalStorageHelper.getCashbackValue();
       },
-      error: (error) => {
+      error: (error: Error) => {
         this.errorMessage = this.errorService.handleError(error, 'Não foi possível autenticar o usuário.');
         this.toastr.error(this.errorMessage);
       }
@@ -142,7 +149,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   private loadProducts(): void {
-    this.products = LocalStorageHelper.getCart();
+    this.products.next(LocalStorageHelper.getCart());
     this.totalPrice = LocalStorageHelper.getTotalPrice();
     this.originalTotalPrice = this.totalPrice;
   }

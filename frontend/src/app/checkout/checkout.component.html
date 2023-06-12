@@ -8,7 +8,7 @@
     <div class="checkout-content">
       <h1 class="checkout-title">Finalizar Pedido</h1>
       <div class="order-section">
-        <mat-table [dataSource]="products" class="order-table">
+        <mat-table [dataSource]="products.value" class="order-table">
           <ng-container matColumnDef="item">
             <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
             <mat-cell *matCellDef="let element; index as i"> {{i + 1}} </mat-cell>
