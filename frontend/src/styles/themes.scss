@@ -1,14 +1,14 @@
 // File: src/styles/themes.scss
 @import '@angular/material/theming';
 
-// Define as paletas de cores para os temas
-$light-primary: mat-palette($mat-grey, 500);
-$light-accent: mat-palette($mat-teal, 500);
-$light-warn: mat-palette($mat-red, 500);
+// Definindo a paleta de cores para os temas claros e escuros utilizando paletas predefinidas do Angular Material
+$light-primary: mat-palette($mat-light-blue);
+$light-accent: mat-palette($mat-amber, A200, A100, A400);
+$light-warn: mat-palette($mat-red);
 
-$dark-primary: mat-palette($mat-grey, 900);
-$dark-accent: mat-palette($mat-teal, 500);
-$dark-warn: mat-palette($mat-red, 500);
+$dark-primary: mat-palette($mat-blue-gray);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-red);
 
 // Cria os temas claro e escuro
 $light-theme: mat-light-theme((color: (primary: $light-primary,
@@ -23,41 +23,41 @@ $dark-theme: mat-dark-theme((color: (primary: $dark-primary,
 
 :root {
   /* Tema claro */
+  --primary: #B1C2BE;
+  --accent: #f45d48;
   --background: #f8f5f2;
-  --main: #B1C2BE;
   --headline: #232323;
   --paragraph: #222525;
   --buttonBorder: #222525;
   --buttonText: #232323;
   --buttonBackground: #078080;
-  --secundary: #f45d48;
   --tertiary: #DB7C26;
   --extra: #9D8DF1;
+  --tableBorder: #B1C2BE;
 }
 
 body.dark-theme {
   /* Tema escuro */
+  --primary: #B1C2BE;
+  --accent: #f25f4c;
   --background: #0f0e17;
-  --main: #B1C2BE;
   --headline: #fffffe;
   --paragraph: #a7a9be;
   --buttonBorder: #a7a9be;
   --buttonText: #fffffe;
   --buttonBackground: #ff8906;
-  --secundary: #f25f4c;
   --tertiary: #e53170;
   --extra: #1E2EDE;
+  --tableBorder: #fffffe;
 }
 
 // Define uma classe para cada tema
 .light-theme {
   @include angular-material-theme($light-theme);
-  // background-color: pink; // apenas para teste
-  background-color: var(--background); // apenas para teste
+  // background-color: var(--background); // apenas para teste
 }
 
 .dark-theme {
   @include angular-material-theme($dark-theme);
-  // background-color: purple; // apenas para teste
-  background-color: var(--background); // apenas para teste
+  // background-color: var(--background); // apenas para teste
 }
