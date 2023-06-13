@@ -3,11 +3,11 @@
 
 // Definindo a paleta de cores para os temas claros e escuros utilizando paletas predefinidas do Angular Material
 $light-primary: mat-palette($mat-light-blue);
-$light-accent: mat-palette($mat-amber, A200, A100, A400);
+$light-accent: mat-palette($mat-orange, 700, A200, A400); // '#f45d48' se aproxima de $mat-orange 700
 $light-warn: mat-palette($mat-red);
 
 $dark-primary: mat-palette($mat-blue-gray);
-$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-accent: mat-palette($mat-deep-orange, 800, A200, A400); // '#f25f4c' se aproxima de $mat-deep-orange 800
 $dark-warn: mat-palette($mat-red);
 
 // Cria os temas claro e escuro
@@ -34,6 +34,8 @@ $dark-theme: mat-dark-theme((color: (primary: $dark-primary,
   --tertiary: #DB7C26;
   --extra: #9D8DF1;
   --tableBorder: #B1C2BE;
+  --text-title: #232323; // cor do texto do título para o tema claro
+  --card-background: #e0e0e0; // cor de fundo do cartão para o tema claro
 }
 
 body.dark-theme {
@@ -49,6 +51,8 @@ body.dark-theme {
   --tertiary: #e53170;
   --extra: #1E2EDE;
   --tableBorder: #fffffe;
+  --text-title: #fffffe; // cor do texto do título para o tema escuro
+  --card-background: #1e1e1e; // cor de fundo do cartão para o tema escuro
 }
 
 // Define uma classe para cada tema

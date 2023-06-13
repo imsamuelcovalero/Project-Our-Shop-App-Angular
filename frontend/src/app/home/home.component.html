@@ -1,34 +1,36 @@
 <!-- File: src/app/home.component.html -->
-<div class="container">
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-  </div>
+<div class="outer-container">
+  <div class="container">
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
 
-  <div class="custom-row">
-    <div class="col-12 col-sm-4 column-container" *ngFor="let product of products; let i = index">
-      <div class="card">
-        <div class="product-image-container">
-          <img [src]="product.imageUrl" class="product-image">
-        </div>
-        <div class="product-name">{{ product.name }}</div>
-        <div class="card-text">
-          <div class="product-price">R$ {{ formatPrice(product.price) }}</div>
-          <div class="quantity-div">
-            <button class="btn quantity-button" (click)="decrementQuantity(product)">-</button>
-            <label class="quantity-label" [attr.for]="'quantity_' + product.name">
-              Quantidade
-              <input [id]="'quantity_' + product.name" class="quantity-input" [(ngModel)]="product.quantity" min="0"
-                type="number" (change)="inputQuantity(product)" />
-            </label>
-            <button class="btn quantity-button" (click)="incrementQuantity(product)">+</button>
+    <div class="custom-row">
+      <div class="col-12 col-sm-4 column-container" *ngFor="let product of products; let i = index">
+        <div class="card">
+          <div class="product-image-container">
+            <img [src]="product.imageUrl" class="product-image">
+          </div>
+          <div class="product-name">{{ product.name }}</div>
+          <div class="card-text">
+            <div class="product-price">R$ {{ formatPrice(product.price) }}</div>
+            <div class="quantity-div">
+              <button class="btn quantity-button" (click)="decrementQuantity(product)">-</button>
+              <label class="quantity-label" [attr.for]="'quantity_' + product.name">
+                Quantidade
+                <input [id]="'quantity_' + product.name" class="quantity-input" [(ngModel)]="product.quantity" min="0"
+                  type="number" (change)="inputQuantity(product)" />
+              </label>
+              <button class="btn quantity-button" (click)="incrementQuantity(product)">+</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <button [disabled]="totalPrice === 0" (click)="goToCheckout()" class="btn fixed-cart-button">
-    <i class="mdi" [ngClass]="{'mdi-cart': totalPrice > 0, 'mdi-cart-outline': totalPrice === 0}"></i>
-    R$ {{ formatPrice(totalPrice) }}
-  </button>
+    <button [disabled]="totalPrice === 0" (click)="goToCheckout()" class="btn fixed-cart-button">
+      <i class="mdi" [ngClass]="{'mdi-cart': totalPrice > 0, 'mdi-cart-outline': totalPrice === 0}"></i>
+      R$ {{ formatPrice(totalPrice) }}
+    </button>
+  </div>
 </div>

@@ -1,63 +1,83 @@
 /* File: src/app/home/home.component.scss */
+.outer-container {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 1rem;
+  background: var(--background);
+}
+
+.alert {
+  color: var(--tertiary);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
 .custom-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
 .column-container {
-  // border: 1px solid blue;
-  flex-basis: 30%;
-  margin: 10px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  padding: 1rem;
 }
 
 .card {
-  border: 2px solid var(--buttonBorder);
-  background-color: lightgrey;
-  height: 330px;
-  width: 220px;
-  align-items: center;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  background: var(--card-background);
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  border-radius: 3px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
 }
 
 .product-image-container {
-  // border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  object-fit: cover;
-  margin-bottom: 0 !important;
-  height: 220px;
+  height: 260px;
+  overflow: hidden;
 }
 
 .product-image {
-  // border: 1px solid yellow;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-image-container:hover .product-image {
+  transform: scale(1.1);
 }
 
 .product-name {
-  // border: 1px solid green;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 16px;
+  font-size: 1.2rem;
   font-weight: bold;
-  height: 30px;
-  padding: 0 !important;
+  color: var(--headline);
+  margin: 0.1rem 0;
 }
 
 .product-price {
-  font-size: 14px;
+  color: var(--accent);
+  font-size: 1.1rem;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.1rem;
 }
 
 .card-text {
@@ -66,24 +86,26 @@
   justify-content: space-between;
   text-align: center;
   padding: 0 5px;
+  height: 5rem;
+  margin: 0.5rem 0;
 }
 
 .quantity-div {
-  // border: 1px solid blue;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  align-self: center;
+  gap: 0.5rem;
   height: 50px;
 }
 
 .btn.quantity-button {
-  min-width: 45px;
-  height: 35px;
+  padding: 0.3rem 0.5rem;
   background-color: var(--buttonBackground);
+  border: none;
+  color: var(--buttonText);
   cursor: pointer;
-  border-radius: 10%;
-  font-size: 20px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  min-width: 45px;
   font-weight: bold;
 }
 
@@ -97,14 +119,13 @@
 
 .quantity-input {
   width: 35px;
-  height: 20px;
-  border: 1px solid black;
-  border-radius: 10%;
-  background-color: white;
+  height: 25px;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
   text-align: center;
+  font-size: 1rem;
   -moz-appearance: textfield;
 }
-
 
 .quantity-input::-webkit-outer-spin-button,
 .quantity-input::-webkit-inner-spin-button {
@@ -112,23 +133,27 @@
   margin: 0;
 }
 
-.btn.fixed-cart-button {
+.fixed-cart-button {
   position: fixed;
-  bottom: 72px;
-  right: 14px;
+  bottom: 20px;
+  right: 20px;
   height: 50px;
-  width: 100px;
-  background-color: grey;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
+  width: 130px;
+  background-color: var(--buttonBackground);
+  border: 1px solid var(--buttonBorder);
+  border-radius: 50px;
+  color: var(--buttonText);
+  font-size: 1.2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.btn.fixed-cart-button fa-icon {
-  margin-right: 10px;
+.fixed-cart-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
 }

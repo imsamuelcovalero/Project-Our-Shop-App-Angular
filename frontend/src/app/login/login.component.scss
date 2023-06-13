@@ -4,15 +4,20 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f5f5f5;
+  background: var(--background);
+}
+
+mat-card-title {
+  color: var(--text-title);
 }
 
 mat-card {
+  background-color: var(--card-background);
   max-width: 400px;
   margin: 2em auto;
   padding: 1em;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary);
   border-radius: 4px;
 }
 
