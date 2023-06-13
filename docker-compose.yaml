@@ -59,14 +59,13 @@ services:
     container_name: our_shop_app_db # Nome do container Docker db
     platform: linux/x86_64 # Plataforma do container
     ports:
-      - 27017:27017 # Mapeia a porta 3306 do container para a porta 3306 do host
+      - 27017:27017 # Mapeia a porta 27017 do container para a porta 27017 do host
     restart: 'always' # Reinicia o container automaticamente se ele parar
     volumes:
       - ./backend/.docker.env:/app-backend/.env # Mapeia o diretório ./backend/.env do host para o diretório /app-backend/.env do container
     environment:
       # Variáveis de ambiente para o serviço
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    command: --default-authentication-plugin=mysql_native_password # Define o comando a ser executado ao iniciar o container
     networks:
       - our_shop_app_network-back-to-bd # Adiciona este serviço à rede especificada
     cap_add:
@@ -75,7 +74,7 @@ services:
       - '27017' # Expõe a porta 27017 do container
     healthcheck:
       # Verifica se o serviço está saudável
-      test: [ "CMD", "mysqladmin", "ping", "-h", "mongodb" ]
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
       interval: 10s
       timeout: 5s
       retries: 5

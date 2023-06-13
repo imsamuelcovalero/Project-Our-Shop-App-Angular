@@ -4,6 +4,7 @@
 @import '@mdi/font/css/materialdesignicons.min.css';
 @import '../node_modules/ngx-toastr/toastr.css';
 @import './styles/themes.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 html,
 body {
@@ -12,7 +13,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .row {
