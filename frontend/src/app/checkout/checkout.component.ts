@@ -89,6 +89,14 @@ export class CheckoutComponent implements OnInit {
     LocalStorageHelper.saveCashbackValue(this.cashbackValue);
   }
 
+  toggleLocation(id: string): void {
+    if (this.selectedLocation === id) {
+      this.selectedLocation = null;
+    } else {
+      this.selectedLocation = id;
+    }
+  }
+
   finalizeOrder(): void {
     if (!this.selectedLocation) {
       this.errorMessage = 'Por favor, selecione um local de retirada.';

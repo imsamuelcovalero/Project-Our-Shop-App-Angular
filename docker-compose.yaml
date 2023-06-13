@@ -8,7 +8,7 @@ services:
     container_name: our_shop_app_frontend # Nome do container Docker frontend
     build: ./frontend # Caminho para o Dockerfile do frontend
     ports:
-      - 8080:8080 # Mapeia a porta 8080 do container para a porta 8080 do host
+      - 4200:4200 # Mapeia a porta 4200 do container para a porta 4200 do host
     working_dir: /app-frontend # Define o diretório de trabalho dentro do container
     volumes:
       - ./frontend:/app-frontend # Mapeia o diretório ./frontend do host para o diretório /app-frontend do container

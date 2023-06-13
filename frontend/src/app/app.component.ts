@@ -44,11 +44,11 @@ export class AppComponent {
   }
 
   get showHomeButton(): boolean {
-    return this.currentPage !== 'login' && this.currentPage !== 'register';
+    return true;
   }
 
   get showOrdersButton(): boolean {
-    return this.currentPage === 'home' || this.currentPage === 'ordersHistory';
+    return this.currentPage !== 'checkout';
   }
 
   get shouldShowHeader(): boolean {

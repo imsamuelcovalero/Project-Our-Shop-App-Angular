@@ -65,7 +65,7 @@
       <div class="pickup-options-list">
         <mat-radio-group name="selectedLocation" [(ngModel)]="selectedLocation">
           <div *ngFor="let location of locations; index as i" class="pickup-option-item">
-            <mat-radio-button class="pickup-option" [value]="location.id">
+            <mat-radio-button class="pickup-option" [value]="location.id" (click)="toggleLocation(location.id)">
               {{ location.name }} - {{ location.address }}
             </mat-radio-button>
           </div>

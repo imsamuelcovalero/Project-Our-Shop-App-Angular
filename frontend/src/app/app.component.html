@@ -3,7 +3,7 @@
   <div class="left-items">
     <button class="app-button" *ngIf="showHomeButton" [disabled]="currentPage === 'home'"
       (click)="goToHome()">Home</button>
-    <button class="app-button" *ngIf="showOrdersButton" [disabled]="currentPage === 'ordersHistory'"
+    <button class="app-button" *ngIf="showOrdersButton" [disabled]="currentPage === 'orders-history'"
       (click)="goToOrders()">Histórico de Ordens</button>
   </div>
   <span class="username" [attr.data-username]="username">Seja bem-vindo(a) ao Our Shop App, </span>
