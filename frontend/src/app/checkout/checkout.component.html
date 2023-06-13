@@ -70,8 +70,7 @@
             </mat-radio-button>
           </div>
         </mat-radio-group>
-        <button mat-raised-button (click)="finalizeOrder()" [disabled]="!selectedLocation"
-          class="finalize-order-button">
+        <button (click)="finalizeOrder()" [disabled]="!selectedLocation" class="finalize-order-button">
           FINALIZAR PEDIDO
         </button>
       </div>

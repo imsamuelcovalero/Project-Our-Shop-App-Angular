@@ -99,9 +99,9 @@
 
 .btn.quantity-button {
   padding: 0.3rem 0.5rem;
-  background-color: var(--buttonBackground);
+  background-color: var(--button-background);
   border: none;
-  color: var(--buttonText);
+  color: var(--button-text);
   cursor: pointer;
   border-radius: 5px;
   font-size: 1.5rem;
@@ -139,10 +139,10 @@
   right: 20px;
   height: 50px;
   width: 130px;
-  background-color: var(--buttonBackground);
-  border: 1px solid var(--buttonBorder);
+  background-color: var(--button-background);
+  border: 1px solid var(--button-border);
   border-radius: 50px;
-  color: var(--buttonText);
+  color: var(--button-text);
   font-size: 1.2rem;
   display: flex;
   align-items: center;

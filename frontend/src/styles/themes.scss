@@ -29,16 +29,17 @@ $dark-theme: mat-dark-theme((color: (primary: $dark-primary,
   --background: #f8f5f2;
   --headline: #232323;
   --paragraph: #222525;
-  --buttonBorder: #222525;
-  --buttonText: #232323;
-  --buttonBackground: #078080;
+  --button-border: #222525;
+  --button-text: #232323;
+  --button-background: #078080;
+  --button-disabled-background: #B1B5B8; // Cor para botão desabilitado, um cinza claro
   --tertiary: #DB7C26;
   --extra: #9D8DF1;
-  --tableBorder: #B1C2BE;
-  --text-title: #232323; // cor do texto do título para o tema claro
-  --card-background: #e0e0e0; // cor de fundo do cartão para o tema claro
-  --header-background: #078080; // Um tom de verde-azulado escuro
-  --header-text: #f8f5f2; // Um tom claro de bege
+  --table-border: #B1C2BE;
+  --text-title: #232323;
+  --card-background: #e0e0e0;
+  --header-background: #078080;
+  --header-text: #f8f5f2;
 }
 
 body.dark-theme {
@@ -49,16 +50,17 @@ body.dark-theme {
   --background: #0f0e17;
   --headline: #fffffe;
   --paragraph: #a7a9be;
-  --buttonBorder: #a7a9be;
-  --buttonText: #fffffe;
-  --buttonBackground: #ff8906;
+  --button-border: #a7a9be;
+  --button-text: #fffffe;
+  --button-background: #ff8906;
+  --button-disabled-background: #313639; // Cor para botão desabilitado, um cinza escuro
   --tertiary: #e53170;
   --extra: #1E2EDE;
-  --tableBorder: #fffffe;
-  --text-title: #fffffe; // cor do texto do título para o tema escuro
-  --card-background: #1e1e1e; // cor de fundo do cartão para o tema escuro
-  --header-background: #a7a9be; // Um tom de azul acinzentado
-  --header-text: #0f0e17; // Quase preto
+  --table-border: #fffffe;
+  --text-title: #fffffe;
+  --card-background: #1e1e1e;
+  --header-background: #a7a9be;
+  --header-text: #0f0e17;
 }
 
 // Define uma classe para cada tema

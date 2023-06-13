@@ -37,8 +37,7 @@
   width: 100%;
 }
 
-.order-section,
-.pickup-section {
+.order-section {
   border: 1px solid var(--primary);
   width: 80%;
   border-radius: 10px;
@@ -82,7 +81,7 @@
 .warn-button:hover {
   // filter: brightness(90%); // uma opção para escurecer a cor
   background-color: var(--accent-hover);
-  color: var(--extra);
+  color: var(--primary);
 }
 
 .totals-section {
@@ -105,9 +104,28 @@
   margin-left: 0.5rem;
 }
 
+.pickup-section {
+  border: 1px solid var(--primary);
+  width: 80%;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--card-background);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+}
+
+.pickup-section h3 {
+  align-self: flex-start;
+  color: var(--text-title);
+}
+
 .pickup-options-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -126,9 +144,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--buttonBackground);
-  color: var(--buttonText);
-  border: 1px solid red; // apenas para teste
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
   border-radius: 50px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -136,16 +154,22 @@
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
   cursor: pointer;
-  width: 400px;
+  width: 250px;
+}
+
+.finalize-order-button:disabled {
+  background-color: var(--button-disabled-background);
+  cursor: not-allowed;
 }
 
 .return-home-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--buttonBackground);
-  color: var(--buttonText);
-  border: 1px solid var(--buttonBorder);
+  align-self: flex-start;
+  background-color: var(--tertiary);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
   border-radius: 50px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -155,8 +179,8 @@
   cursor: pointer;
 }
 
-.finalize-order-button:hover,
-.return-home-button:hover {
+.return-home-button:hover,
+.finalize-order-button:not(:disabled):hover {
   transform: scale(1.03);
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
 }
