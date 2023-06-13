@@ -1,40 +1,88 @@
 /* File: src/app/checkout/checkout.component.scss */
-.checkout-content {
-  // border: 1px solid red;
+// Definindo as cores de aviso para temas claros e escuros
+
+.checkout-page {
   width: 100%;
+  height: auto;
+  background: var(--background);
+  padding: 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.checkout-title,
-.pickup-title {
-  width: 100%;
-  text-align: flex-start;
-  width: 80%;
+.error-message {
+  color: var(--tertiary);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.order-section {
-  border: 1px solid black;
+.checkout-content {
   width: 80%;
-  margin: auto;
-  margin-bottom: 20px;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.checkout-title,
+.pickup-title {
+  font-size: 2rem;
+  color: var(--headline);
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.order-section,
+.pickup-section {
+  border: 1px solid var(--primary);
+  width: 80%;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--card-background);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .order-table {
   width: 100%;
+  margin-bottom: 2rem;
+}
+
+.order-table th,
+.order-table td {
+  padding: 1rem;
+  text-align: center;
+  color: var(--headline);
 }
 
 .order-table th {
-  padding: 5px;
-  text-align: center;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
-.order-table td {
-  text-align: center;
-  padding: 5px;
+.order-table mat-header-cell {
+  background-color: var(--header-background);
+  color: var(--header-text);
+}
+
+.warn-button {
+  background-color: var(--accent);
+  color: white;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.warn-button:hover {
+  // filter: brightness(90%); // uma opção para escurecer a cor
+  background-color: var(--accent-hover);
+  color: var(--extra);
 }
 
 .totals-section {
@@ -43,54 +91,72 @@
   align-items: flex-end;
 }
 
-.total {
-  display: flex;
-  margin-right: 65px;
-}
-
+.total,
 .cashback {
   display: flex;
-  gap: 8px;
-  margin-right: 8px;
+  align-items: center;
+  color: var(--headline);
+  margin-bottom: 0.5rem;
 }
 
-.pickup-section {
-  border: 1px solid black;
-  width: 80%;
-  padding: 20px;
-  margin: auto;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+.total span:last-child,
+.cashback span:last-child {
+  font-weight: bold;
+  margin-left: 0.5rem;
 }
 
 .pickup-options-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+  gap: 1rem;
 }
 
 .pickup-option-item {
-  padding: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .pickup-option {
-  text-align: left;
-  width: 70%;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .finalize-order-button {
-  display: block;
-  margin: 20px auto;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--buttonBackground);
+  color: var(--buttonText);
+  border: 1px solid red; // apenas para teste
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  cursor: pointer;
+  width: 400px;
 }
 
 .return-home-button {
-  align-self: flex-start;
-  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--buttonBackground);
+  color: var(--buttonText);
+  border: 1px solid var(--buttonBorder);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  cursor: pointer;
 }
 
-.error-message {
-  color: red;
+.finalize-order-button:hover,
+.return-home-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
 }

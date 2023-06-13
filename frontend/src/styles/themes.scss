@@ -25,6 +25,7 @@ $dark-theme: mat-dark-theme((color: (primary: $dark-primary,
   /* Tema claro */
   --primary: #B1C2BE;
   --accent: #f45d48;
+  --accent-hover: #d1482c;
   --background: #f8f5f2;
   --headline: #232323;
   --paragraph: #222525;
@@ -36,12 +37,15 @@ $dark-theme: mat-dark-theme((color: (primary: $dark-primary,
   --tableBorder: #B1C2BE;
   --text-title: #232323; // cor do texto do título para o tema claro
   --card-background: #e0e0e0; // cor de fundo do cartão para o tema claro
+  --header-background: #078080; // Um tom de verde-azulado escuro
+  --header-text: #f8f5f2; // Um tom claro de bege
 }
 
 body.dark-theme {
   /* Tema escuro */
   --primary: #B1C2BE;
   --accent: #f25f4c;
+  --accent-hover: #d1482c;
   --background: #0f0e17;
   --headline: #fffffe;
   --paragraph: #a7a9be;
@@ -53,6 +57,8 @@ body.dark-theme {
   --tableBorder: #fffffe;
   --text-title: #fffffe; // cor do texto do título para o tema escuro
   --card-background: #1e1e1e; // cor de fundo do cartão para o tema escuro
+  --header-background: #a7a9be; // Um tom de azul acinzentado
+  --header-text: #0f0e17; // Quase preto
 }
 
 // Define uma classe para cada tema
