@@ -1,11 +1,8 @@
 <!-- File: src/app/register.component.html -->
 <mat-card>
-  <!-- <div *ngIf="successMessage" class="alert alert-success">
-    {{ successMessage }}
-  </div>
   <div *ngIf="errorMessage" class="alert alert-danger">
     {{ errorMessage }}
-  </div> -->
+  </div>
   <mat-card-header color="primary">
     <mat-card-title>Registro</mat-card-title>
   </mat-card-header>
@@ -40,8 +37,12 @@
         </mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-button color="primary" [disabled]="!registerForm.valid" type="submit">Registrar</button>
+        <button mat-raised-button color="primary" [disabled]="!registerForm.valid" type="submit">Registrar</button>
       </mat-card-actions>
     </form>
+    <div style="margin-top: 1em; text-align: center;">
+      <p class="to-login-text">Já tem uma conta?</p>
+      <button mat-raised-button color="accent" (click)="goToLogin()">Login</button>
+    </div>
   </mat-card-content>
 </mat-card>
