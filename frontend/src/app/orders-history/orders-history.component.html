@@ -4,41 +4,37 @@
     {{ errorMessage }}
   </div>
 
-  <div class="order-history-wrapper">
-    <div class="order-history-content">
-      <div class="cashback-summary">
-        <div class="cashback">
-          <span class="cashback-label">Saldo atual de Cashback:</span>
-          <span>R$ {{ formatPrice(cashbackValue) }}</span>
-        </div>
-      </div>
-      <h1 class="order-history-title">Histórico de Ordens</h1>
-      <div class="orders-container">
-        <table mat-table [dataSource]="orders" class="order-table">
-          <ng-container matColumnDef="order">
-            <th mat-header-cell *matHeaderCellDef>Ordem</th>
-            <td mat-cell *matCellDef="let order; index as i">{{ i + 1 }}</td>
-          </ng-container>
+  <div class="order-history-content">
+    <h1 class="order-history-title">Histórico de Ordens</h1>
+    <div class="cashback">
+      <span class="cashback-label">Saldo atual de Cashback:</span>
+      <span class="cashback-value">R$ {{ formatPrice(cashbackValue) }}</span>
+    </div>
+    <div class="orders-container">
+      <mat-table [dataSource]="orders" class="order-table">
+        <ng-container matColumnDef="order">
+          <mat-header-cell *matHeaderCellDef>Ordem</mat-header-cell>
+          <mat-cell *matCellDef="let order; index as i">{{ i + 1 }}</mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Data</th>
-            <td mat-cell *matCellDef="let order">{{ formatDate(order.saleDate) }}</td>
-          </ng-container>
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+          <mat-cell *matCellDef="let order">{{ formatDate(order.saleDate) }}</mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="orderValue">
-            <th mat-header-cell *matHeaderCellDef>Valor da Ordem</th>
-            <td mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice) }}</td>
-          </ng-container>
+        <ng-container matColumnDef="orderValue">
+          <mat-header-cell *matHeaderCellDef>Valor da Ordem</mat-header-cell>
+          <mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice) }}</mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="cashbackValue">
-            <th mat-header-cell *matHeaderCellDef>Valor de Cashback</th>
-            <td mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice * 0.01) }}</td>
-          </ng-container>
+        <ng-container matColumnDef="cashbackValue">
+          <mat-header-cell *matHeaderCellDef>Valor de Cashback</mat-header-cell>
+          <mat-cell *matCellDef="let order">R$ {{ formatPrice(order.totalPrice * 0.01) }}</mat-cell>
+        </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      </div>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </div>
   </div>
 </mat-card>
