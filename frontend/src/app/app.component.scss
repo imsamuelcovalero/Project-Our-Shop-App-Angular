@@ -1,25 +1,76 @@
-// File: app.component.scss
-// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+/* File: app.component.scss */
 .mat-toolbar {
   display: flex;
   justify-content: space-between;
+  height: 60px;
+  padding: 0 !important;
 }
 
 .left-items,
 .right-items {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
-.spacer {
-  flex: 1;
+/* Espaço adicional entre os botões de trocar tema e logout */
+.right-items .theme-icon {
+  margin-right: 1rem; // Ajuste este valor conforme necessário
 }
 
-// .light-theme {
-//   background-color: yellow;
-// }
+/* Estilização dos botões */
+.app-button {
+  border: 1px solid var(--button-border);
+  background-color: var(--button-background);
+  color: var(--button-text);
+  // margin-right: 0.5rem; // Espaço entre botões
+  transition: background-color 0.3s ease; // Transição suave na cor de fundo
 
-// .dark-theme {
-//   background-color: green;
-// }
+  /* Ajuste a fonte e altura dos botões */
+  font-size: 1em; // Ajuste este valor conforme necessário
+  height: 100%;
+}
+
+.app-button:hover {
+  filter: brightness(90%);
+}
+
+.app-button:disabled {
+  background-color: var(--button-disabled-background);
+  cursor: not-allowed;
+}
+
+.app-button:not(:disabled):hover {
+  filter: brightness(90%);
+  transform: scale(1.03);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Destaque do nome do usuário no texto de boas-vindas */
+span.username {
+  color: var(--headline);
+}
+
+span.username::after {
+  content: attr(data-username);
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Tooltip para o ícone de troca de tema */
+.right-items .theme-icon[mattooltip] {
+  cursor: pointer;
+}
+
+/* Cores dos ícones de tema */
+.theme-icon {
+  color: var(--button-text); // Cor padrão para o ícone de tema
+}
+
+body.dark-theme .theme-icon {
+  color: #000; // A cor do ícone de tema escuro (lua) quando o tema escuro está ativo
+}
+
+body.light-theme .theme-icon {
+  color: #fff; // A cor do ícone de tema claro (sol) quando o tema claro está ativo
+}

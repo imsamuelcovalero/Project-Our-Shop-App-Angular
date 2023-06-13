@@ -25,6 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       preventDuplicates: true,
     }),
 
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
