@@ -55,7 +55,7 @@ O __Project-Our-Shop-App-Angular__ conta com uma interface amigável e intuitiva
 1. Clone o repositório para sua máquina local.
 2. Navegue até o diretório raiz do projeto no terminal: `cd Project-Our-Shop-App-Angular`.
 3. No diretório raiz do projeto, execute `docker-compose up -d` para iniciar os containers.
-4. O servidor de `backend` estará rodando na porta `3000` e a aplicação na porta `4200`.
+4. O servidor de `backend` estará rodando na porta `3001` e a aplicação na porta `4200`.
 
 **Sem Docker**
 
@@ -63,10 +63,11 @@ O __Project-Our-Shop-App-Angular__ conta com uma interface amigável e intuitiva
 2. Navegue até o diretório raiz do projeto no terminal: `cd Project-Our-Shop-App-Angular`.
 3. Acesse o diretório `backend` e execute `npm install` para instalar as dependências.
 4. Inicie o servidor com `npm run dev`.
-5. Acesse o diretório `frontend` e execute `npm install` para instalar as dependências.
-6. Execute `ng serve` para iniciar a aplicação.
-7. Abra um navegador web e acesse `http://localhost:4200`.
-8. Você precisa estar com o `MongoDB` rodando localmente ou por um container do `docker` para que a aplicação funcione corretamente.
+5. A aplicação estará rodando na porta `3001`.
+6. Acesse o diretório `frontend` e execute `npm install` para instalar as dependências.
+7. Execute `ng serve` para iniciar a aplicação.
+8. Abra um navegador web e acesse `http://localhost:4200`.
+9. Você precisa estar com o `MongoDB` rodando localmente ou por um container do `docker` para que a aplicação funcione corretamente.
 
 **Maiores detalhes sobre o funcionamento da aplicação podem ser encontrados no `README` do `frontend` e do `backend`.**
 

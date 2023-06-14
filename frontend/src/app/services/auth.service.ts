@@ -5,6 +5,7 @@ import { IHttpError } from '../../interfaces/http-error.interface';
 import { LocalStorageHelper } from '../helpers/localStorage.helper';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
