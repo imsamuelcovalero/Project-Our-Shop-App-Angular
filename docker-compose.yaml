@@ -34,15 +34,6 @@ services:
     restart: always # Reinicia o container automaticamente se ele parar
     env_file:
       - ./backend/.docker.env # Define o arquivo de variáveis de ambiente
-    # environment:
-    #   # Variáveis de ambiente para o serviço
-    #   APP_PORT: ${APP_PORT}
-    #   JWT_SECRET: ${JWT_SECRET}
-    #   MYSQL_USER: ${MYSQL_USER}
-    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    #   MYSQL_DB: ${MYSQL_DB}
-    #   MYSQL_HOST: db
-    #   MYSQL_PORT: ${MYSQL_PORT}
     networks:
       - our_shop_app_network-back-to-front
       - our_shop_app_network-back-to-bd

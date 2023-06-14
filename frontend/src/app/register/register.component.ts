@@ -42,7 +42,7 @@ export class RegisterComponent {
         next: response => {
           this.toastr.success(response.message);
           this.successMessage = response.message;
-          setTimeout(() => this.router.navigate(['/login']), 2000);
+          setTimeout(() => this.router.navigate(['/login']), 1200);
         },
         error: error => {
           this.errorMessage = this.errorService.handleError(error, 'Erro ao registrar. Tente novamente.');
