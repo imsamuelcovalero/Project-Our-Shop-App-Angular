@@ -87,8 +87,4 @@ O `README` referente ao __Backend__ pode ser acessado [aqui](backend/README.md).
 
 Este projeto utiliza a [Especificação de Commits Convencionais](https://www.conventionalcommits.org/en/v1.0.0/), com alguns tipos da [convenção Angular](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines). Além disso, foi utilizado o pacote [conventional-commit-cli](https://www.npmjs.com/package/conventional-commit-cli)
 
-### Lint
-
-- O projeto "Project-Our-Shop-App-Angular" foi desenvolvido seguindo os padrões de código TypeScript com o uso do [ESLint](https://eslint.org/), juntamente com os plugins ['@typescript-eslint/parser' e '@typescript-eslint/eslint-plugin'](https://github.com/typescript-eslint/typescript-eslint). Essa combinação permite o linting efetivo do código TypeScript, promovendo um código limpo e bem estruturado.
-
 [⬆ Voltar ao topo](#sumário)
