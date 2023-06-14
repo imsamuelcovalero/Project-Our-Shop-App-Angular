@@ -29,7 +29,7 @@ __Em construção__
 
 <!-- Adicione a URL da imagem aqui -->
 
-![Project-Our-Shop-App-Angular](url-da-imagem)
+![Project-Our-Shop-App-Angular](https://github.com/imsamuelcovalero/Project-Our-Shop-App-Angular/assets/98184355/6651864d-1d2e-459f-ac2f-6ce4cb667097)
 
 </div>
 
