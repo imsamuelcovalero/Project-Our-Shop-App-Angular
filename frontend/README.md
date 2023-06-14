@@ -47,7 +47,7 @@ git clone git@github.com:imsamuelcovalero/Project-Our-Shop-App-Angular.git
 Em seguida, navegue até o diretório `frontend` e instale as dependências necessárias com os seguintes comandos:
 
 ```bash
-cd Project-Our-Shop-App-Angular/frontend
+cd Project-Our-Shop-App-Angular
 
 cd frontend
 npm install

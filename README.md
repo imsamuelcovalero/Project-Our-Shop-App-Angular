@@ -16,7 +16,6 @@ O __Project-Our-Shop-App-Angular__ é uma aplicação de comércio eletrônico d
     - [Backend](#backend)
   - [Notas](#notas)
     - [Git, GitHub e Histórico de Commits](#git-github-e-histórico-de-commits)
-    - [Lint](#lint)
 
 ## Visualização
 
