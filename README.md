@@ -10,8 +10,7 @@ O __Project-Our-Shop-App-Angular__ é uma aplicação de comércio eletrônico d
   - [Contexto](#contexto)
     - [Visão Geral de Funcionalidades](#visão-geral-de-funcionalidades)
   - [Como rodar a aplicação e detalhes do funcionamento](#como-rodar-a-aplicação-e-detalhes-do-funcionamento)
-      - [Com Docker](#com-docker)
-      - [Sem Docker](#sem-docker)
+    - [Início Rápido](#início-rápido)
     - [Frontend](#frontend)
     - [Backend](#backend)
   - [Notas](#notas)
@@ -47,17 +46,18 @@ O __Project-Our-Shop-App-Angular__ conta com uma interface amigável e intuitiva
 
 ## Como rodar a aplicação e detalhes do funcionamento
 
+### Início Rápido
 <details>
-<summary><strong>Início rápido</strong></summary>
+<summary><strong>Detalhes</strong></summary>
 
-#### Com Docker
+**Com Docker**
 
 1. Clone o repositório para sua máquina local.
 2. Navegue até o diretório raiz do projeto no terminal: `cd Project-Our-Shop-App-Angular`.
 3. No diretório raiz do projeto, execute `docker-compose up -d` para iniciar os containers.
 4. O servidor de `backend` estará rodando na porta `3000` e a aplicação na porta `4200`.
 
-#### Sem Docker
+**Sem Docker**
 
 1. Clone o repositório para sua máquina local.
 2. Navegue até o diretório raiz do projeto no terminal: `cd Project-Our-Shop-App-Angular`.
