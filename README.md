@@ -1,6 +1,6 @@
 # Bem-vindo ao Project-Our-Shop-App-Angular
 
-O __Project-Our-Shop-App-Angular__ é uma aplicação de comércio eletrônico desenvolvida com Angular no frontend. Ela permite que usuários visualizem produtos, adicionem itens ao carrinho de compras, realizem o checkout escolhendo o ponto de retirada e vejam o histórico de pedidos.
+O __Project-Our-Shop-App-Angular__ é uma aplicação de comércio eletrônico desenvolvida com `MongoDB` no banco de dados, `Angular.js` no `frontend` e `Node.js` com `Mongoose`no `backend`. Ela permite que usuários visualizem produtos, adicionem itens ao carrinho de compras, realizem o checkout escolhendo o ponto de retirada e vejam o histórico de pedidos.
 
 ## Sumário
 
@@ -35,18 +35,16 @@ __Em construção__
 
 ## Contexto
 
-O __Project-Our-Shop-App-Angular__ é uma solução desenvolvida para proporcionar uma experiência de varejo online. Com ela, os usuários podem navegar por um catálogo de produtos, adicioná-los ao carrinho de compras e realizar o checkout.
+O __Project-Our-Shop-App-Angular__ é uma solução desenvolvida para proporcionar uma experiência de varejo online, com opção de escolha de ponto de retirada dos itens adquiridos. Com ela, os usuários podem navegar por um catálogo de produtos, adicioná-los ao carrinho de compras e realizar o checkout, aonde é possível utilizar o bônus do cashback para abater no valor final da compra. Além disso, os usuários podem ver o histórico de pedidos com o valor atual de saldo cashback.
 
 ### Visão Geral de Funcionalidades
 
-O __Project-Our-Shop-App-Angular__ conta com uma interface amigável que permite aos usuários:
+O __Project-Our-Shop-App-Angular__ conta com uma interface amigável e intuitiva, com opção de `temas` claro e escuro, que permite aos usuários:
 
-- Logar ou criar uma conta.
-- Navegar por um catálogo de produtos.
-- Adicionar produtos ao carrinho de compras.
-- Realizar o checkout dos itens no carrinho.
-- Escolher um local para retirar o pedido.
-- Ver o histórico de pedidos com o valor atual de cashback.
+- Fazer login ou se registrar
+- Visualizar e escolher produtos que deseje comprar
+- Ter a opção de utilizar o cashback para abater no valor total da compra
+- Escolher um local de retirada
 
 ## Como rodar a aplicação e detalhes do funcionamento
 
