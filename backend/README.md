@@ -12,6 +12,7 @@
   - [Instalar dependências](#instalar-dependências)
   - [Executando com Docker](#executando-com-docker)
   - [Executando sem Docker](#executando-sem-docker)
+- [Lint](#lint)
 
 ## Contexto
 
