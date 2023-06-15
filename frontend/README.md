@@ -6,8 +6,8 @@
 - [Instalação e Execução](#instalação-e-execução)
   - [Download do projeto](#download-do-projeto)
   - [Instalar dependências](#instalar-dependências)
-- [Executando com Docker](#executando-com-docker)
-- [Executando sem Docker](#executando-sem-docker)
+  - [Executando com Docker](#executando-com-docker)
+  - [Executando sem Docker](#executando-sem-docker)
 - [Lint](#lint)
 
 ## Contexto
