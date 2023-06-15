@@ -43,6 +43,7 @@ O __Project-Our-Shop-App-Angular__ conta com uma interface amigável e intuitiva
 - Visualizar e escolher produtos que deseje comprar
 - Ter a opção de utilizar o cashback para abater no valor total da compra
 - Escolher um local de retirada
+- Consultar o histórico de ordens
 
 ## Como rodar a aplicação e detalhes do funcionamento
 
