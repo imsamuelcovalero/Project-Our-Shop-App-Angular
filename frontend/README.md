@@ -88,7 +88,7 @@ Para verificar a qualidade do código com o linter, use o comando:
 ng lint
 ```
 
-- O projeto "Project-Our-Shop-App-Angular" foi desenvolvido seguindo os padrões de código TypeScript com o uso do [ESLint](https://eslint.org/), juntamente com os plugins ['@typescript-eslint/parser' e '@typescript-eslint/eslint-plugin'](https://github.com/typescript-eslint/typescript-eslint). Essa combinação permite o linting efetivo do código TypeScript, promovendo um código limpo e bem estruturado.
+- O `frontend` foi desenvolvido seguindo os padrões de código TypeScript com o uso do [ESLint](https://eslint.org/), juntamente com os plugins ['@typescript-eslint/parser' e '@typescript-eslint/eslint-plugin'](https://github.com/typescript-eslint/typescript-eslint). Essa combinação permite o linting efetivo do código TypeScript, promovendo um código limpo e bem estruturado.
 
 É importante lembrar que, ao encontrar problemas durante a instalação ou execução, uma boa prática é verificar as mensagens de erro que aparecem no terminal. Elas geralmente fornecem pistas sobre o que pode estar errado. Também é recomendável manter todas as dependências atualizadas e garantir que seu ambiente de desenvolvimento esteja configurado corretamente. Além disso, é aconselhável consultar a documentação oficial das dependências usadas no projeto em caso de problemas.
 
