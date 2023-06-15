@@ -142,8 +142,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   private loadUserInfo(): void {
-    console.log('aqui');
-
     this.authService.authenticateUser().subscribe({
       next: () => {
         this.cashbackValue = LocalStorageHelper.getCashbackValue();

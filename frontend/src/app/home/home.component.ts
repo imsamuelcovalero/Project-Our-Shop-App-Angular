@@ -2,10 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 import { LocalStorageHelper } from '../helpers/localStorage.helper';
 import { FormatHelper } from '../helpers/format.helper';
 import { ErrorService } from '../services/error.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { IProductItem } from '../../interfaces/product-item.interface';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,8 +25,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
+    private authService: AuthService,
     private errorService: ErrorService,
-    // private toastr: ToastrService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -79,16 +81,17 @@ export class HomeComponent implements OnInit {
   }
 
   private loadUserInfo(): void {
-    const { token } = LocalStorageHelper.getUserInfo();
-    this.apiService.get<{ cashbackValue: number }>('/login/me', { headers: { Authorization: token } }).subscribe({
+    this.authService.authenticateUser().subscribe({
       next: (result) => {
         LocalStorageHelper.saveCashbackValue(result.cashbackValue);
       },
-      error: (error) => {
+      error: (error: Error) => {
         this.errorMessage = this.errorService.handleError(error, 'Não foi possível autenticar o usuário.');
+        this.toastr.error(this.errorMessage);
       }
     });
   }
+
 
   private loadProducts(): void {
     this.apiService.get<IProductItem[]>('/products').subscribe({

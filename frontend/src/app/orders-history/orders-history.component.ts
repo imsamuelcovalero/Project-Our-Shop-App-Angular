@@ -45,8 +45,6 @@ export class OrdersHistoryComponent implements OnInit {
   }
 
   private loadUserInfo(): void {
-    console.log('aqui');
-
     this.authService.authenticateUser().subscribe({
       next: () => {
         this.cashbackValue = LocalStorageHelper.getCashbackValue();
@@ -63,10 +61,7 @@ export class OrdersHistoryComponent implements OnInit {
     const { token } = LocalStorageHelper.getUserInfo();
     this.apiService.get<IOrder[]>('/orders', { headers: { Authorization: token } }).subscribe({
       next: (result) => {
-        console.log('result', result);
-
         this.orders = result;
-        console.log('this.orders', this.orders);
       },
       error: (error) => {
         this.errorMessage = this.errorService.handleError(error, 'Não foi possível recuperar o histórico de pedidos.');
