@@ -21,6 +21,7 @@ Neste projeto, o __Backend__desempenha diversas funções fundamentais, tais com
 - Possui alguns `scripts` no `package.json` para cuidar da organização e inicialização correta da aplicação, dando a opção de reiniciar o banco de dados ou manter os dados existentes.
 - Receber do `Frontend` as entradas de dados e aplicar as validações e regras de negócio.
 - Devolver para o `Frontend` as informações necessárias, a serem exibidas para o usuário.
+- Cuidar da integridade e legitimidade dos dados
 - Ao receber uma nova ordem de compra, gravar as informações pertinentes no `banco de dados`, inclusive o valor atualizado do saldo de cashback do cliente.
 
 ## Regras de Negócio
