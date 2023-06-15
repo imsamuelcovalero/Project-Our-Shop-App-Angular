@@ -33,7 +33,7 @@ __Em construção__
 
 ## Contexto
 
-O __Project-Our-Shop-App-Angular__ é uma solução desenvolvida para proporcionar uma experiência de varejo online, com opção de escolha de ponto de retirada dos itens adquiridos. Com ela, os usuários podem navegar por um catálogo de produtos, adicioná-los ao carrinho de compras e realizar o checkout, aonde é possível utilizar o bônus do cashback para abater no valor final da compra. Além disso, os usuários podem ver o histórico de pedidos com o valor atual de saldo cashback.
+O __Project-Our-Shop-App-Angular__ é um sistema de comércio eletrônico criado para proporcionar uma experiência de compra online eficiente e versátil. Ele permite que os usuários naveguem por um catálogo de produtos, adicionem itens ao carrinho de compras, e efetuem o _checkout_ com a opção de escolher o ponto de retirada dos produtos adquiridos. Um destaque desta plataforma é o recurso de _cashback_, que pode ser utilizado para reduzir o valor total da compra. Além disso, os usuários podem acompanhar seu histórico de pedidos e consultar o saldo atual de _cashback_ na página de histórico de ordens, proporcionando maior controle e transparência sobre suas transações.
 
 ### Visão Geral de Funcionalidades
 
