@@ -18,11 +18,13 @@ const tokenFunctions = {
   },
 
   decode: (req, _res, next) => {
-    const token = req.headers.authorization;
+    let token = req.headers.authorization;
     // console.log('tokenDecode', token);
 
     if (!token) throw new boom.badRequest('Token must be a valid token');
     // if (!token) throw new CustomError(401, 'Token must be a valid token');
+
+    token = token.split(' ')[1];
 
     try {
       const decoded = jwt.verify(token, secret);

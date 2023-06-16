@@ -31,7 +31,6 @@ const verifyUser = async (req, res, _next) => {
   const result = await userService.verifyUser(id);
 
   return res.status(200).json(result);
-
 };
 
 module.exports = {
