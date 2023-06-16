@@ -24,7 +24,10 @@ const tokenFunctions = {
     if (!token) throw new boom.badRequest('Token must be a valid token');
     // if (!token) throw new CustomError(401, 'Token must be a valid token');
 
-    token = token.split(' ')[1];
+    // Se o token começa com 'Bearer ', remove 'Bearer '
+    if (token.startsWith('Bearer ')) {
+      token = token.slice(7, token.length);
+    }
 
     try {
       const decoded = jwt.verify(token, secret);
