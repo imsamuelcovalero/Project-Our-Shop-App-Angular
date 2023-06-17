@@ -6,7 +6,7 @@ const path = require('path');
 const errorMiddleware = require('./middlewares/error.middleware');
 
 const swagger = require('swagger-ui-express');
-const swaggerFile = require('./doc/swagger.json');
+const swaggerFile = require('./doc/swagger.js');
 
 const uploadPath = path.resolve('uploads');
 

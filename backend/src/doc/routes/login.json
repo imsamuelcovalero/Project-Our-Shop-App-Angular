@@ -1,0 +1,160 @@
+{
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Login",
+        "description": "Endpoint for user login.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful. Returns token and user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Incorrect password.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. User not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login/me": {
+      "get": {
+        "tags": [
+          "User Verification"
+        ],
+        "summary": "Verify user authentication",
+        "description": "This endpoint verifies the authentication of the user based on the provided JWT",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is authenticated and the user data is returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserVerificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Provided token is malformed"
+          },
+          "401": {
+            "description": "Unauthorized - Token is not provided"
+          },
+          "404": {
+            "description": "Not Found - User not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "required": [
+          "identifier",
+          "password"
+        ],
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "description": "Email or username. Must be valid email or have at least 3 characters.",
+            "example": "user@example.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User password. Must have at least 8 characters.",
+            "example": "yourpassword"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Auth token."
+          },
+          "id": {
+            "type": "string",
+            "description": "User ID."
+          },
+          "email": {
+            "type": "string",
+            "description": "User email."
+          },
+          "username": {
+            "type": "string",
+            "description": "User username."
+          },
+          "role": {
+            "type": "string",
+            "description": "User role."
+          }
+        }
+      },
+      "UserVerificationResponse": {
+        "type": "object",
+        "properties": {
+          "cashbackValue": {
+            "type": "number",
+            "description": "User's accumulated cashback value"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code."
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message."
+          }
+        }
+      }
+    }
+  }
+}
