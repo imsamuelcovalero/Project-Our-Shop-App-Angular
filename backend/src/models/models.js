@@ -30,8 +30,6 @@ const SaleSchema = new mongoose.Schema({
   total_price: { type: Number, required: true },
   pick_up_place_id: { type: mongoose.Schema.Types.ObjectId, ref: 'WithdrawalPoint', required: true },
   sale_date: { type: Date, required: true },
-  // product_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-  // quantity: { type: Number, required: true }
 });
 
 // Esquema de produtos por venda
