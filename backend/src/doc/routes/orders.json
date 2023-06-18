@@ -20,7 +20,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Order"
+                    "$ref": "#/components/schemas/Ordersresponse"
                   }
                 }
               }
@@ -92,7 +92,7 @@
   },
   "components": {
     "schemas": {
-      "Order": {
+      "Ordersresponse": {
         "type": "object",
         "properties": {
           "totalPrice": {

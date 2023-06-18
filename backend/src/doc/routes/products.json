@@ -13,7 +13,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductResponse"
+                  }
                 }
               }
             }
@@ -23,7 +26,31 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Products not found"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "products": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Products not found"
+                          ]
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -34,7 +61,7 @@
   },
   "components": {
     "schemas": {
-      "Product": {
+      "ProductResponse": {
         "type": "object",
         "properties": {
           "imageUrl": {
