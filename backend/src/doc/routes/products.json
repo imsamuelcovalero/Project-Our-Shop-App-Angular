@@ -1,0 +1,56 @@
+{
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get all products",
+        "description": "This endpoint returns all products. Note: this endpoint requires user authentication via '/login/me' route before being called.",
+        "responses": {
+          "200": {
+            "description": "Operation successful. Returns all products.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. No products found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "type": "string",
+            "description": "URL of the product image."
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name."
+          },
+          "price": {
+            "type": "number",
+            "description": "Product price."
+          }
+        }
+      }
+    }
+  }
+}

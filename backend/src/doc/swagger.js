@@ -24,7 +24,21 @@ let swaggerObject = {
         description: "JWT used for authorization. Generated using HS256 algorithm and expires in 24 hours."
       }
     },
-    schemas: {}
+    schemas: {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code."
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message."
+          }
+        }
+      }
+    }
   }
 };
 

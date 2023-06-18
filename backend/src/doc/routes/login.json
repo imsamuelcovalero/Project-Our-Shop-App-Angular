@@ -141,19 +141,6 @@
             "description": "User's accumulated cashback value"
           }
         }
-      },
-      "Error": {
-        "type": "object",
-        "properties": {
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code."
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message."
-          }
-        }
       }
     }
   }

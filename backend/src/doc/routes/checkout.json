@@ -1,0 +1,201 @@
+{
+  "paths": {
+    "/checkout": {
+      "get": {
+        "tags": [
+          "Checkout"
+        ],
+        "summary": "Get all withdrawal points",
+        "description": "Endpoint to retrieve all available withdrawal points and to create a new order. Note: this endpoint requires user authentication via '/login/me' route before being called.",
+        "responses": {
+          "200": {
+            "description": "Returns all withdrawal points.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WithdrawalPoint"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No withdrawal points found."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Checkout"
+        ],
+        "summary": "Create a new order",
+        "description": "Endpoint to create a new order after validating the checkout data. Note: this endpoint requires user authentication via '/login/me' route before being called.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Checkout"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Order created successfully."
+          },
+          "400": {
+            "description": "Validation error. Checkout data is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation error. Checkout data is invalid."
+                    },
+                    "errors": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "example": {
+                        "userId": [
+                          "User ID deve existir"
+                        ],
+                        "totalPrice": [
+                          "Total Price deve existir"
+                        ],
+                        "products": [
+                          "Product ID deve existir"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User, withdrawal point or product not found."
+                    },
+                    "errors": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "example": "User not found"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred on the server while creating the order."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Checkout": {
+        "type": "object",
+        "required": [
+          "userId",
+          "totalPrice",
+          "withdrawalPointId",
+          "saleDate",
+          "products",
+          "cashbackValue"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "User ID in MongoDB format.",
+            "example": "60db1b2d8b161942080dad3e"
+          },
+          "totalPrice": {
+            "type": "number",
+            "description": "Total price of the order.",
+            "example": 200.50
+          },
+          "withdrawalPointId": {
+            "type": "string",
+            "description": "ID of the withdrawal point where the order will be picked up, in MongoDB format.",
+            "example": "60db1b2d8b161942080dad3e"
+          },
+          "saleDate": {
+            "type": "string",
+            "description": "Date when the sale was made, in ISO format.",
+            "example": "YYYY-MM-DD"
+          },
+          "products": {
+            "type": "array",
+            "description": "Array of product objects, each containing a productId and a quantity.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "string",
+                  "description": "Product ID in MongoDB format.",
+                  "example": "60db1b2d8b161942080dad3e"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "Quantity of the product.",
+                  "example": 2
+                }
+              }
+            }
+          },
+          "cashbackValue": {
+            "type": "number",
+            "description": "Value of cashback.",
+            "example": 10.50
+          }
+        }
+      },
+      "WithdrawalPoint": {
+        "type": "object",
+        "required": [
+          "name",
+          "address"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the withdrawal point."
+          },
+          "address": {
+            "type": "string",
+            "description": "Address of the withdrawal point."
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 const withdrawalPointService = require('../services/withdrawalPointService');
 
 const getAllWithdrawalPoints = async (_req, res, _next) => {
+  console.log('getAllWithdrawalPoints');
   const result = await withdrawalPointService.getAllWithdrawalPoints();
 
   return res.status(200).json(result);
