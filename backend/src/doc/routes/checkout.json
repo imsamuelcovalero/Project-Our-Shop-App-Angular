@@ -181,10 +181,6 @@
       },
       "WithdrawalPoint": {
         "type": "object",
-        "required": [
-          "name",
-          "address"
-        ],
         "properties": {
           "name": {
             "type": "string",
