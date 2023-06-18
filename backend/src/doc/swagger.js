@@ -8,7 +8,7 @@ const files = fs.readdirSync(routesPath);
 
 // Inicialização do objeto swagger
 let swaggerObject = {
-  openapi: "3.0.0",
+  openapi: "3.0.3",
   info: {
     title: "API",
     description: "API",

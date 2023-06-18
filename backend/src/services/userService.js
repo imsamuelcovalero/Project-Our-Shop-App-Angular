@@ -16,9 +16,6 @@ const checkUserExistsBy = async (usernameOrEmail) => {
 const login = async (userData) => {
   const { identifier, password } = userData;
 
-  // const users = await User.find();
-  // console.log('users', users);
-
   const user = await checkUserExistsBy(identifier);
   console.log('user', user);
 

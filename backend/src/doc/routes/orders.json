@@ -20,34 +20,14 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Ordersresponse"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Token is malformed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer",
-                      "example": 400
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Token is malformed"
-                    }
+                    "$ref": "#/components/schemas/OrderResponse"
                   }
                 }
               }
             }
           },
           "401": {
-            "description": "Unauthorized - Token is not provided",
+            "description": "Unauthorized - Token not provided or malformed",
             "content": {
               "application/json": {
                 "schema": {
@@ -57,9 +37,28 @@
                       "type": "integer",
                       "example": 401
                     },
-                    "message": {
-                      "type": "string",
-                      "example": "Token is not provided"
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "notProvided": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Token not provided"
+                          ]
+                        },
+                        "malformed": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Token is malformed"
+                          ]
+                        }
+                      }
                     }
                   }
                 }
@@ -92,7 +91,7 @@
   },
   "components": {
     "schemas": {
-      "Ordersresponse": {
+      "OrderResponse": {
         "type": "object",
         "properties": {
           "totalPrice": {

@@ -21,8 +21,8 @@ const tokenFunctions = {
     let token = req.headers.authorization;
     // console.log('tokenDecode', token);
 
-    if (!token) throw new boom.badRequest('Token must be a valid token');
-    // if (!token) throw new CustomError(401, 'Token must be a valid token');
+    if (!token) throw new boom.unauthorized('Token not provided');
+    // if (!token) throw new CustomError(401, 'Token not provided');
 
     // Se o token começa com 'Bearer ', remove 'Bearer '
     if (token.startsWith('Bearer ')) {
@@ -37,8 +37,8 @@ const tokenFunctions = {
 
       next();
     } catch (err) {
-      throw new boom.badRequest('Token is malformed');
-      // throw new CustomError(401, 'Token must be a valid token');
+      throw new boom.unauthorized('Token is malformed');
+      // throw new CustomError(401, 'Token is malformed');
     }
   },
 

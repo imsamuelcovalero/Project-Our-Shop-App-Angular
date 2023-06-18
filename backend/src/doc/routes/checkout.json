@@ -15,7 +15,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/WithdrawalPoint"
+                    "$ref": "#/components/schemas/WithdrawalPointResponse"
                   }
                 }
               }
@@ -258,16 +258,18 @@
           }
         }
       },
-      "WithdrawalPoint": {
+      "WithdrawalPointResponse": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the withdrawal point."
+            "description": "Name of the withdrawal point.",
+            "example": "Padaria do Zé"
           },
           "address": {
             "type": "string",
-            "description": "Address of the withdrawal point."
+            "description": "Address of the withdrawal point.",
+            "example": "Avenida Trabalhador São Calense, 525"
           }
         }
       }

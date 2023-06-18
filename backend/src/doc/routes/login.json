@@ -28,12 +28,42 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The identifier must be a valid email or at least 3 characters. Or the password must exist and be at least 8 characters long.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 400
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Identifier must be a valid email or have at least 3 characters. Or Password must exist and be at least 8 characters long."
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized. Incorrect password.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Incorrect password"
+                    }
+                  }
                 }
               }
             }
@@ -43,7 +73,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
                 }
               }
             }
@@ -74,14 +114,64 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request - Provided token is malformed"
-          },
           "401": {
-            "description": "Unauthorized - Token is not provided"
+            "description": "Unauthorized - Token not provided or malformed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "notProvided": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Token not provided"
+                          ]
+                        },
+                        "malformed": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Token is malformed"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found - User not found"
+            "description": "Not Found - User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -138,7 +228,8 @@
         "properties": {
           "cashbackValue": {
             "type": "number",
-            "description": "User's accumulated cashback value"
+            "description": "User's accumulated cashback value",
+            "example": 5.5
           }
         }
       }
