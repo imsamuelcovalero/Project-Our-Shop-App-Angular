@@ -71,13 +71,40 @@
                       },
                       "example": {
                         "userId": [
-                          "User ID deve existir"
+                          "User ID deve existir",
+                          "User ID inválido"
                         ],
                         "totalPrice": [
-                          "Total Price deve existir"
+                          "Total Price deve existir",
+                          "Total Price deve ser um número",
+                          "Total Price deve ser maior ou igual a 0"
+                        ],
+                        "withdrawalPointId": [
+                          "WithdrawalPointId deve existir",
+                          "Withdrawal Point ID inválido"
+                        ],
+                        "saleDate": [
+                          "Sale Date deve existir",
+                          "Sale Date deve ser uma data válida",
+                          "Data de venda não pode ser no passado"
                         ],
                         "products": [
-                          "Product ID deve existir"
+                          "Product ID deve existir",
+                          "Product ID inválido"
+                        ],
+                        "quantity": [
+                          "Quantity deve existir",
+                          "Quantity deve ser um número",
+                          "Quantity deve ser um número inteiro",
+                          "Quantity deve ser maior ou igual a 1"
+                        ],
+                        "cashbackValue": [
+                          "Cashback Value deve existir",
+                          "Cashback Value deve ser um número",
+                          "Cashback Value deve ser maior ou igual a 0"
+                        ],
+                        "duplicateProducts": [
+                          "Produtos duplicados não são permitidos"
                         ]
                       }
                     }
@@ -99,13 +126,65 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "User, withdrawal point or product not found."
+                      "example": "Resource not found."
                     },
                     "errors": {
                       "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "example": "User not found"
+                      "properties": {
+                        "userId": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "User not found"
+                          ]
+                        },
+                        "withdrawalPointId": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Withdrawal Point not found"
+                          ]
+                        },
+                        "productId": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Product not found"
+                          ]
+                        },
+                        "newOrder": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Failed to create new order"
+                          ]
+                        },
+                        "newProductSale": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Failed to create new product sale"
+                          ]
+                        },
+                        "updateUser": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "Failed to update user cashback"
+                          ]
+                        }
                       }
                     }
                   }
