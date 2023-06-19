@@ -3,7 +3,7 @@ const joi = require('joi');
 
 const ALL_FIELDS_MUST_BE_FILLED = '400|Todos os campos devem ser preenchidos';
 const INVALID_FIELDS = '422|Campos inválidos';
-const INCORRECT_PASSWORD = '401|Senha incorreta';
+const INCORRECT_PASSWORD = '400|Senha em formato inválido';
 const USERNAME_MUST_HAVE_AT_LEAST_3_CHARACTERS = '400|Nome de usuário deve ter pelo menos 3 caracteres';
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 const usernameRegex = /^[a-zA-Z0-9_]{3,}$/;

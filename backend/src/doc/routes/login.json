@@ -29,7 +29,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. The identifier must be a valid email or at least 3 characters. Or the password must exist and be at least 8 characters long.",
+            "description": "Bad Request. User data is invalid.",
             "content": {
               "application/json": {
                 "schema": {
@@ -41,7 +41,30 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Identifier must be a valid email or have at least 3 characters. Or Password must exist and be at least 8 characters long."
+                      "example": "Bad Request. User data is invalid."
+                    },
+                    "errors": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "example": {
+                        "identifier": [
+                          "Todos os campos devem ser preenchidos",
+                          "Identifier deve ser um e-mail válido",
+                          "Identifier deve ter pelo menos 3 caracteres",
+                          "Identifier deve existir"
+                        ],
+                        "password": [
+                          "Todos os campos devem ser preenchidos",
+                          "Senha deve ter pelo menos 8 caracteres",
+                          "Password deve existir",
+                          "Senha em formato inválido"
+                        ]
+                      }
                     }
                   }
                 }
