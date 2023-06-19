@@ -30,11 +30,13 @@ let swaggerObject = {
         "properties": {
           "statusCode": {
             "type": "integer",
-            "description": "Status code."
+            "description": "Status code.",
+            "example": 400
           },
           "message": {
             "type": "string",
-            "description": "Error message."
+            "description": "Error message.",
+            "example": "Error message."
           }
         }
       }
