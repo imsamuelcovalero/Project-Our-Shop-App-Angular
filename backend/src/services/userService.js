@@ -35,8 +35,6 @@ const login = async (userData) => {
 
 const checkUserExists = async (userData) => {
   const { identifier } = userData;
-  console.log('checkUserExists', userData);
-  console.log('identifier', identifier);
   
   const user = await checkUserExistsBy(identifier);
   
@@ -47,12 +45,11 @@ const checkUserExists = async (userData) => {
   return { message: 'User does not exist' };
 };
 
-// cria uma função auxiliar para criar um novo usuário no banco de dados
+// função responsável por criar um novo usuário no banco de dados
 const createNewUser = async (userData) => {
   // primeiro verifica se o usuário já existe no banco de dados
   const { name, username, email, password } = userData;
   const user = await checkUserExistsBy(email);
-  console.log('user', user);
 
   if (user) throw boom.conflict('User already exists');
   // if (user) throw new CustomError(409, 'User already exists'); 
@@ -68,7 +65,6 @@ const createNewUser = async (userData) => {
     role: 'customer',
     cashback_value: 0
   });
-  console.log('newUser', newUser);
 
   // caso ocorra algum problema e o usuário não seja criado,
   // retorna um erro personalizado.

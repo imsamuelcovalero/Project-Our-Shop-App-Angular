@@ -189,12 +189,12 @@
           "identifier": {
             "type": "string",
             "description": "Email or username. Must be valid email or have at least 3 characters.",
-            "example": "user@example.com"
+            "example": "johndoe@example.com or john.doe"
           },
           "password": {
             "type": "string",
             "description": "User password. Must have at least 8 characters.",
-            "example": "yourpassword"
+            "example": "Yourpassword123"
           }
         }
       },
@@ -203,23 +203,28 @@
         "properties": {
           "token": {
             "type": "string",
-            "description": "Auth token."
+            "description": "Auth token.",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
           },
           "id": {
             "type": "string",
-            "description": "User ID."
+            "description": "User ID.",
+            "example": "60cc034e1d295a3218c5f4be"
           },
           "email": {
             "type": "string",
-            "description": "User email."
+            "description": "User email.",
+            "example": "johndoe@example.com"
           },
           "username": {
             "type": "string",
-            "description": "User username."
+            "description": "User username.",
+            "example": "john.doe"
           },
           "role": {
             "type": "string",
-            "description": "User role."
+            "description": "User role.",
+            "example": "admin"
           }
         }
       },

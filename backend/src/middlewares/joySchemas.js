@@ -73,6 +73,7 @@ const registerSchema = joi.object({
   }),
 });
 
+// esquema para verificar se o usuário existe
 const checkUserSchema = joi.object({
   identifier: joi.alternatives().try(joi.string().email(), joi.string().min(3)).required().messages({
     'string.empty': ALL_FIELDS_MUST_BE_FILLED,
