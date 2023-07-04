@@ -6,42 +6,49 @@
 - [Banco de Dados](#banco-de-dados)
   - [Diagrama](#diagrama)
 - [API](#api)
+  - [Acesso Online](#acesso-online)
+  - [Acesso Local](#acesso-local)
+  - [Autenticação](#autenticação)
 - [Tecnologias e Ferramentas Utilizadas](#tecnologias-e-ferramentas-utilizadas)
 - [Instalação e Execução](#instalação-e-execução)
   - [Download do projeto](#download-do-projeto)
   - [Instalar dependências](#instalar-dependências)
   - [Executando com Docker](#executando-com-docker)
   - [Executando sem Docker](#executando-sem-docker)
-- [Lint](#lint)
+  - [Lint](#lint)
+  - [Testes](#testes)
 
 ## Contexto
 
 Neste projeto, o __Backend__ desempenha diversas funções fundamentais, tais como:
 
 - Montar a estrutura inicial das tabelas e relações através do [`Mongoose`](https://mongoosejs.com/).
-- Possui alguns `scripts` no `package.json` para cuidar da organização e inicialização correta da aplicação, dando a opção de reiniciar o banco de dados ou manter os dados existentes.
-- Receber do `Frontend` as entradas de dados e aplicar as validações e regras de negócio.
-- Devolver para o `Frontend` as informações necessárias, a serem exibidas para o usuário.
+- Possui alguns *scripts* no `package.json` para cuidar da organização e inicialização correta da aplicação, dando a opção de reiniciar o banco de dados ou manter os dados existentes.
+- Validar a requisição e registrar um novo usuário no banco de dados, caso seja criado pelo `Frontend`.
+- Receber do `Frontend` as entradas de dados e aplicar as validações e regras de negócio, em caso de uma nova ordem de compra.
+- Devolver para o `Frontend` as respostas das requisições, sejam elas de sucesso ou de erro.
 - Cuidar da integridade e legitimidade dos dados.
-- Ao receber uma nova ordem de compra, gravar as informações pertinentes no `banco de dados`, inclusive o valor atualizado do saldo de cashback do cliente.
+- Ao receber uma nova ordem de compra, gravar as informações pertinentes no `banco de dados`, inclusive o valor atualizado do saldo de *cashback* do cliente.
+- Prover para o `Frontend` o histórico de compras do cliente, com as informações de cada compra e o valor de *cashback* acumulado.
 
 ## Regras de Negócio
 
-Estamos utilizando principalmente o Joi para aplicar as regras de negócios e validações. O Joi é um validador de dados para JavaScript que utiliza um esquema para descrever a forma de dados que são permitidos e que serão validados. O Joi é extremamente poderoso e flexível, e pode ser utilizado para validar dados de forma simples e complexa.
+Estamos utilizando principalmente o __Joi__ para aplicar as regras de negócios e validações. O __Joi__ é um validador de dados para `JavaScript` que utiliza um esquema para descrever a forma de dados que são permitidos e que serão validados. O __Joi__ é extremamente poderoso e flexível, e pode ser utilizado para validar dados de forma consistente e confiável.
 
 <details>
 <summary>Requisitos levantados</summary>
 
-Em construção...
+1. __Funcionalidade do usuário__: Os usuários devem ser capazes de fazer login, registrar-se e visualizar seu histórico de pedidos. A validação de novos usuários e o registro de suas informações no banco de dados são responsabilidade do backend. O sistema deve ser capaz de lidar com informações de usuário únicas, como nome de usuário e e-mail.
 
-</details>
+2. __Funcionalidade de produtos__: Os usuários devem ser capazes de visualizar e escolher produtos para comprar. O sistema deve garantir que cada produto tenha um nome único e deve ser capaz de lidar com o preço e a imagem do produto.
 
-<details>
-<summary>Verificações do backend</summary>
+3. __Funcionalidade de carrinho de compras__: Os usuários devem ser capazes de adicionar produtos ao carrinho de compras e efetuar o checkout. Durante o checkout, os usuários devem ter a opção de usar seu cashback para reduzir o valor total da compra. O backend deve receber as entradas de dados do frontend e aplicar as validações e regras de negócio necessárias.
 
-```plaintext
-Em construção...
-```
+4. __Funcionalidade de cashback__: Após cada compra, o sistema deve calcular e atualizar o saldo de cashback do cliente. Este saldo deve ser registrado no banco de dados e estar disponível para consulta na página de histórico de ordens.
+
+5. __Funcionalidade de pontos de retirada__: Os usuários devem ter a opção de escolher um ponto de retirada durante o checkout. Cada ponto de retirada deve ter um nome e um endereço únicos.
+
+6. __Funcionalidade de histórico de ordens__: Os usuários devem ser capazes de consultar o histórico de ordens, que inclui informações sobre cada compra e o valor de cashback acumulado. O backend deve fornecer essas informações para o frontend.
 
 </details>
 
@@ -61,19 +68,44 @@ Em construção...
   
 ## API
 
-Em construção com o `Swagger`.
+A `API` é documentada e fácil de usar, graças ao Swagger, uma ferramenta que permite a exploração dos endpoints da `API` e os esquemas de dados associados por meio de uma interface interativa. Além disso, foi realizado o *__deploy__* da aplicação no `Railway`.
+
+Você pode acessar a documentação da `API` *__online__* ou __localmente__.
+
+### Acesso Online
+
+A documentação Swagger é hospedada e pode ser acessada no seguinte link: [API Documentation](https://seu_endereco_deploy/docs).
+
+### Acesso Local
+
+Caso deseje rodar a aplicação localmente e acessar a documentação, siga estes passos:
+
+1. Certifique-se que a aplicação está rodando. Por padrão, ela deve estar rodando na porta 3001.
+
+2. Abra um navegador web e acesse a URL `http://localhost:3001/docs`.
+
+A interface do Swagger deve aparecer, fornecendo acesso a informações detalhadas sobre a API e permitindo que você experimente os diferentes endpoints.
+
+### Autenticação
+
+Alguns endpoints requerem autenticação. Quando um usuário realiza o login, um token é gerado e retornado como parte da resposta. Este token deve ser fornecido no campo de Authorization do Swagger para acessar esses endpoints.
+
+Por favor, note que a autenticação é necessária para garantir a segurança dos dados e permitir que apenas usuários autorizados acessem determinadas funcionalidades.
 
 ## Tecnologias e Ferramentas Utilizadas
 
 Na construção do `Backend`, optei por utilizar uma variedade de tecnologias e ferramentas, selecionadas por suas vantagens específicas:
 
-- [Node.js](https://nodejs.org/en): A plataforma de desenvolvimento em `JavaScript` foi escolhida para a construção do backend devido à sua alta performance, facilidade de aprendizado e ampla adoção na comunidade de desenvolvimento.
-- [MongoDB](https://www.mongodb.com/): O MongoDB, um banco de dados não-relacional, foi utilizado devido à sua flexibilidade e escalabilidade, perfeitamente adequado para aplicativos modernos.
-- [Mongoose](https://mongoosejs.com/): Uma biblioteca para MongoDB e Node.js que proporciona uma solução direta, baseada em esquemas, para modelar os dados da aplicação.
-- [Joi](https://github.com/sideway/joi): Esta biblioteca de validação de dados em JavaScript foi escolhida por sua facilidade de uso e versatilidade na validação de diversos tipos de dados, incluindo o arquivo CSV importado.
+- [Node.js](https://nodejs.org/en): A plataforma de desenvolvimento em `JavaScript` foi escolhida para a construção do `backend` devido à sua alta performance, facilidade de aprendizado e ampla adoção na comunidade de desenvolvimento.
+- [MongoDB](https://www.mongodb.com/): O `MongoDB`, um banco de dados não-relacional, foi utilizado devido à sua flexibilidade e escalabilidade, perfeitamente adequado para aplicativos modernos.
+- [Mongoose](https://mongoosejs.com/): Uma biblioteca para `MongoDB` e `Node.js` que proporciona uma solução direta, baseada em esquemas, para modelar os dados da aplicação.
+- [Joi](https://github.com/sideway/joi): Esta biblioteca de validação de dados em `JavaScript` foi escolhida por sua facilidade de uso e versatilidade na validação de diversos tipos de dados.
 - [Express](https://expressjs.com/): Este `framework web` para `Node.js` foi escolhido devido à sua simplicidade e eficácia na criação de rotas e endpoints do backend.
-- [JWT](https://jwt.io/): JSON Web Tokens é um padrão (RFC 7519) que define uma forma compacta e autossuficiente para transmitir informações com segurança entre as partes como um objeto JSON.
-- [@hapi/boom](https://github.com/hapijs/boom): Utilizei a biblioteca `Boom` para lidar com erros HTTP de forma mais fácil e organizada, permitindo uma melhor manipulação e apresentação dos erros para os usuários.
+- [JWT](https://jwt.io/): `JSON Web Tokens` é um padrão __RFC 7519__, que define uma forma compacta e autossuficiente para transmitir informações com segurança entre as partes como um objeto `JSON`.
+- [@hapi/boom](https://github.com/hapijs/boom): Utilizei a biblioteca `Boom` para lidar com erros `HTTP` de forma mais fácil e organizada, permitindo uma melhor manipulação e apresentação dos erros para os usuários.
+- [Mocha](https://mochajs.org/): `Mocha` é um framework de testes `JavaScript` flexível e de fácil utilização, com suporte para testes síncronos e assíncronos.
+- [Chai](https://www.chaijs.com/): `Chai` é uma biblioteca de asserção para `Node.js` que proporciona um rico conjunto de asserções que podem ser usadas para escrever testes de forma mais legível e expressiva.
+- [Sinon](https://sinonjs.org/): `Sinon` é uma biblioteca de testes que oferece recursos como *spies*, *stubs* e *mocks*, facilitando a criação de testes unitários e de integração.
 
 ## Instalação e Execução
 
@@ -129,6 +161,14 @@ Para verificar a qualidade do código com o linter, use o comando:
 
 ```bash
 npm run lint
+```
+
+### Testes
+
+Para assegurar a qualidade do código e o funcionamento correto das funcionalidades, foram escritos testes unitários utilizando Mocha, Chai e Sinon. Você pode executar os testes com o seguinte comando:
+
+```bash
+npm test
 ```
 
 - O `backend` foi desenvolvido seguindo os padrões de código JavaScript com o uso do [ESLint](https://eslint.org/), utilizando a extensão 'trybe-backend' e algumas regras personalizadas para promover um código limpo e bem estruturado.
