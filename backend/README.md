@@ -80,15 +80,15 @@ A documentação `Swagger` está hospedada e pode ser acessada no seguinte link:
 
 Caso deseje rodar a aplicação localmente e acessar a documentação, siga estes passos:
 
-1. Certifique-se que a aplicação está rodando. Por padrão, ela deve estar rodando na porta 3001.
+1. Certifique-se que a aplicação está rodando. Por padrão, ela deve estar rodando na `porta 3001`.
 
 2. Abra um navegador web e acesse a URL `http://localhost:3001/docs`.
 
-A interface do Swagger deve aparecer, fornecendo acesso a informações detalhadas sobre a API e permitindo que você experimente os diferentes endpoints.
+A interface do `Swagger` deve aparecer, fornecendo acesso a informações detalhadas sobre a `API` e permitindo que você experimente os diferentes *endpoints*.
 
 ### Autenticação
 
-Alguns endpoints requerem autenticação. Quando um usuário realiza o login, um token é gerado e retornado como parte da resposta. Este token deve ser fornecido no campo de Authorization do Swagger para acessar esses endpoints.
+Alguns *endpoints* requerem autenticação. Quando um usuário realiza o *login*, um __*token*__ é gerado e retornado como parte da resposta. Este __*token*__ deve ser fornecido no campo de __*Authorization*__ do `Swagger` para acessar esses *endpoints*.
 
 Por favor, note que a autenticação é necessária para garantir a segurança dos dados e permitir que apenas usuários autorizados acessem determinadas funcionalidades.
 
