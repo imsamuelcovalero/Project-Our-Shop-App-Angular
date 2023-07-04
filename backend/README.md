@@ -13,6 +13,8 @@
 - [Instalação e Execução](#instalação-e-execução)
   - [Download do projeto](#download-do-projeto)
   - [Instalar dependências](#instalar-dependências)
+    - [Configuração Local](#configuração-local)
+    - [Configuração Docker](#configuração-docker)
   - [Executando com Docker](#executando-com-docker)
   - [Executando sem Docker](#executando-sem-docker)
   - [Lint](#lint)
@@ -127,6 +129,49 @@ npm install
 ```
 
 Esses comandos instalam todas as dependências listadas no arquivo `package.json`, que são necessárias para a execução do projeto.
+
+<details>
+<summary>Configuração de Variáveis de Ambiente</summary>
+
+  O projeto utiliza variáveis de ambiente para configuração de valores sensíveis ou específicos do ambiente, como chaves secretas, nomes de usuário e senhas.
+
+  No diretório do `backend`, você encontrará dois arquivos `.env.example` e `.docker.example.env`. Esses arquivos contêm exemplos das variáveis de ambiente que o projeto espera.
+
+  #### Configuração Local
+
+  1. Renomeie o arquivo `.env.example` para `.env`.
+  2. Substitua os valores conforme necessário. As variáveis incluem:
+
+  ```bash
+  #### SECRET VARIABLES
+  JWT_SECRET=suaSenhaSecreta
+
+  MONGO_INITDB_DATABASE=mongodb # name_db
+  MONGO_INITDB_ROOT_USERNAME=root # probably root
+  MONGO_INITDB_ROOT_PASSWORD=suaSenha # probably password
+  MONGO_URI=mongodb://localhost:27017/mongodb # mongodb://localhost:27017/name_db
+  ```
+
+  #### Configuração Docker
+
+  1. Renomeie o arquivo `.docker.example.env` para `.env`.
+  2. Substitua os valores conforme necessário. As variáveis incluem:
+
+  ```bash
+  #### SECRET VARIABLES
+  JWT_SECRET=suaSenhaSecreta
+
+  MONGO_INITDB_DATABASE=mongodb # name_db
+  MONGO_INITDB_ROOT_USERNAME=root # probably root
+  MONGO_INITDB_ROOT_PASSWORD=suaSenha # probably password
+  MONGO_URI=mongodb://mongodb:27017/mongodb # mongodb://mongodb:27017/name_db
+  ```
+
+  Substitua cada valor com os detalhes do seu próprio ambiente.
+
+  __Nota:__ As variáveis `MONGO_INITDB_DATABASE`, `MONGO_INITDB_ROOT_USERNAME`, `MONGO_INITDB_ROOT_PASSWORD` e `MONGO_URI` são usadas para configurar a conexão com o __MongoDB__. Lembre-se de usar valores que correspondam à configuração do seu banco de dados.
+
+</details>
 
 ### Executando com Docker
 
