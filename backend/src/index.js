@@ -4,7 +4,7 @@ require('dotenv').config();
 require('./database/connection');
 const insertInitialData = require('./models/initialData');
 
-const PORT = process.env.APP_PORT || 3001;
+const PORT = process.env.APP_PORT || 3000;
 
 /* Se quiser utilizar a estrutura de criar uma função para conectar ao banco de dados no arquivo connection.js */
 // const connectToDatabase = require('./models/connection');
@@ -20,5 +20,5 @@ const PORT = process.env.APP_PORT || 3001;
 //   });
 
 insertInitialData().then(() => {
-  app.listen(PORT, () => console.log(`Running server on port: ${PORT}`));
+  app.listen(PORT, "0.0.0.0", () => console.log(`Running server on port: ${PORT}`));
 });
