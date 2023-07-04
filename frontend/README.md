@@ -21,16 +21,16 @@ No lado do __Frontend__, o usuário é capaz de:
 - Ter a opção de utilizar o cashback para abater no valor total da compra.
 - Escolher um local para retirar o pedido.
 - Ver o histórico de pedidos e o saldo atual de cashback.
-- Personalizar a cor do tema pelo ícone de `Mode`, localizado no cabeçalho.
-- Fazer logout da aplicação.
+- Optar pelos temas claro ou escuro através ícone de `Mode`, localizado no cabeçalho.
+- Fazer *logout* da aplicação.
 
 ## Tecnologias e Ferramentas Utilizadas
 
 O `Frontend` foi desenvolvido com o uso das seguintes tecnologias e ferramentas:
 
-- [Angular](https://angular.io/docs): Utilizamos o Angular, um framework JavaScript robusto e amplamente adotado para a criação de aplicações web de página única (SPA). A escolha se deu pelo fato de que o Angular oferece um ecossistema completo, incluindo ferramentas para roteamento, formulários, testes de unidade e end-to-end, entre outras funcionalidades.
-- [Angular Material](https://material.angular.io/): O Angular Material foi utilizado para fornecer estilos CSS pré-construídos e componentes de interface do usuário reutilizáveis. Isso ajudou a acelerar o processo de desenvolvimento e garantir a consistência visual em toda a aplicação. Além disso, Angular Material adere aos princípios de design do Material Design da Google, garantindo uma experiência do usuário de alta qualidade.
-- [Ngx-toastr](https://www.npmjs.com/package/ngx-toastr): Usamos o ngx-toastr para fornecer feedback ao usuário por meio de notificações.
+- [Angular](https://angular.io/docs): Utilizei o __Angular__, um *framework* `JavaScript` robusto e amplamente adotado para a criação de aplicações *web* de página única (SPA). A escolha se deu pelo fato de que o __Angular__ oferece um ecossistema completo, incluindo ferramentas para roteamento, formulários, testes unitários e *end-to-end*, entre outras funcionalidades.
+- [Angular Material](https://material.angular.io/): O __Angular Material__ foi utilizado para fornecer estilos `CSS` pré-construídos e componentes de interface do usuário reutilizáveis. Isso ajudou a acelerar o processo de desenvolvimento e garantir a consistência visual em toda a aplicação. Além disso, __Angular Material__ adere aos princípios de design do __Material Design da Google__, garantindo uma experiência do usuário de alta qualidade.
+- [Ngx-toastr](https://www.npmjs.com/package/ngx-toastr): Usamos o __Toastr__ para fornecer feedback ao usuário por meio de notificações. O __Toastr__ é uma biblioteca `JavaScript` que permite exibir mensagens de notificação de forma simples e elegante.
 
 ## Instalação e Execução
 
@@ -78,7 +78,7 @@ cd frontend
 ng serve
 ```
 
-Este comando inicia o servidor de desenvolvimento e o site ficará disponível na porta 4200, geralmente acessível através do endereço `http://localhost:4200` no navegador.
+Este comando inicia o servidor de desenvolvimento e o site ficará disponível na __porta 4200__, geralmente acessível através do endereço `http://localhost:4200` no navegador.
 
 ## Lint
 
@@ -88,13 +88,13 @@ Para verificar a qualidade do código com o linter, use o comando:
 ng lint
 ```
 
-- O `frontend` foi desenvolvido seguindo os padrões de código TypeScript com o uso do [ESLint](https://eslint.org/), juntamente com os plugins ['@typescript-eslint/parser' e '@typescript-eslint/eslint-plugin'](https://github.com/typescript-eslint/typescript-eslint). Essa combinação permite o linting efetivo do código TypeScript, promovendo um código limpo e bem estruturado.
+- O `frontend` foi desenvolvido seguindo os padrões de código __TypeScript__ com o uso do [ESLint](https://eslint.org/), juntamente com os plugins ['@typescript-eslint/parser' e '@typescript-eslint/eslint-plugin'](https://github.com/typescript-eslint/typescript-eslint). Essa combinação permite o linting efetivo do código __TypeScript__, promovendo um código limpo e bem estruturado.
 
 É importante lembrar que, ao encontrar problemas durante a instalação ou execução, uma boa prática é verificar as mensagens de erro que aparecem no terminal. Elas geralmente fornecem pistas sobre o que pode estar errado. Também é recomendável manter todas as dependências atualizadas e garantir que seu ambiente de desenvolvimento esteja configurado corretamente. Além disso, é aconselhável consultar a documentação oficial das dependências usadas no projeto em caso de problemas.
 
-Em caso de dúvidas, não hesite em abrir uma [issue](https://github.com/imsamuelcovalero/Project-Our-Shop-App-Angular/issues) no GitHub ou me contatar diretamente. Estou à disposição para ajudar.
+Em caso de dúvidas, não hesite em abrir uma [issue](https://github.com/imsamuelcovalero/Project-Our-Shop-App-Angular/issues) no GitHub. Além disso, estou disponível para contato direto para mais esclarecimentos.
 
-Espero que essas sugestões tenham sido úteis. Se houver mais alguma coisa em que eu possa ajudar, por favor, me avise.
+Espero que essas orientações tenham sido úteis. Caso necessite de suporte adicional ou tenha outras questões, por favor, me avise.
 
 [⬆ Voltar ao topo](#sumário)<br>
 [⬅ Voltar para a página anterior](../README.md)
