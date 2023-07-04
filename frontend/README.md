@@ -18,9 +18,9 @@ No lado do __Frontend__, o usuário é capaz de:
 - Navegar por um catálogo de produtos.
 - Adicionar produtos ao carrinho de compras.
 - Realizar o checkout dos itens no carrinho.
-- Ter a opção de utilizar o cashback para abater no valor total da compra.
+- Ter a opção de utilizar o *cashback* para abater no valor total da compra.
 - Escolher um local para retirar o pedido.
-- Ver o histórico de pedidos e o saldo atual de cashback.
+- Ver o histórico de pedidos e o saldo atual de *cashback*.
 - Optar pelos temas claro ou escuro através ícone de `Mode`, localizado no cabeçalho.
 - Fazer *logout* da aplicação.
 
@@ -82,7 +82,7 @@ Este comando inicia o servidor de desenvolvimento e o site ficará disponível n
 
 ## Lint
 
-Para verificar a qualidade do código com o linter, use o comando:
+Para verificar a qualidade do código com o `linter`, use o comando:
 
 ```bash
 ng lint
