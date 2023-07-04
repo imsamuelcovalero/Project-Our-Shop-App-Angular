@@ -60,21 +60,19 @@ O banco de dados foi criado utilizando o `MongoDB` e o `Mongoose` para gerenciar
 
 <div align="center">
 
-Em construção...
-
-<!-- **Em construção:** ![Diagrama do banco de dados](https://github.com/imsamuelcovalero/Desafio_Shopper/assets/98184355/cf010ceb-1cb3-4ed9-9d4b-02c9b83ebb13) -->  
+![Diagrama do banco de dados](https://github.com/imsamuelcovalero/Project-Our-Shop-App-Angular/assets/98184355/0064391a-778b-4a36-8478-92263db5ee76)
 
 </div>
   
 ## API
 
-A `API` é documentada e fácil de usar, graças ao Swagger, uma ferramenta que permite a exploração dos endpoints da `API` e os esquemas de dados associados por meio de uma interface interativa. Além disso, foi realizado o *__deploy__* da aplicação no `Railway`.
+A `API` é documentada e fácil de usar, graças ao `Swagger`, uma ferramenta que permite a exploração dos endpoints da `API` e os esquemas de dados associados por meio de uma interface interativa. Além disso, foi realizado o *__deploy__* da aplicação no `Railway`.
 
 Você pode acessar a documentação da `API` *__online__* ou __localmente__.
 
 ### Acesso Online
 
-A documentação Swagger é hospedada e pode ser acessada no seguinte link: [API Documentation](https://seu_endereco_deploy/docs).
+A documentação `Swagger` está hospedada e pode ser acessada no seguinte link: [API Documentation](https://seu_endereco_deploy/docs).
 
 ### Acesso Local
 
