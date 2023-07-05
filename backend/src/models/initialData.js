@@ -3,11 +3,7 @@ const bcrypt = require('bcrypt');
 const { User, Product, WithdrawalPoint } = require('./models'); // Caminho para seus modelos
 require('dotenv').config();
 
-console.log('log de teste API_URL', process.env.API_URL);
-
 const URL_IMG = process.env.API_URL || 'http://localhost:3000';
-
-console.log('log de teste URL_IMG', URL_IMG);
 
 async function insertInitialData() {
   // Inserir usuário administrador
@@ -45,8 +41,6 @@ async function insertInitialData() {
     { name: 'Skol Beats Senses 269ml', price: 3.57, url_image: `${URL_IMG}/images/skol_beats_senses_269ml.jpg` },
     { name: 'Stella Artois 275ml', price: 3.49, url_image: `${URL_IMG}/images/stella_artois_275ml.jpg` },
   ];
-
-  console.log('log de teste products', products);
 
   // Verifica se os produtos já existem
   const productsExist = await Product.find().exec();
