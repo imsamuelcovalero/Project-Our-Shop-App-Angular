@@ -46,6 +46,8 @@ async function insertInitialData() {
     { name: 'Stella Artois 275ml', price: 3.49, url_image: `${URL_IMG}/images/stella_artois_275ml.jpg` },
   ];
 
+  console.log('log de teste products', products);
+
   // Verifica se os produtos já existem
   const productsExist = await Product.find().exec();
 
