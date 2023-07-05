@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build --configuration production",
-    "start:prod": "ng build --configuration production && npx http-server -p 4200 -a 0.0.0.0 -c-1 dist/frontend",
+    "start:prod": "ng build --configuration production && npx serve -l tcp://0.0.0.0:4200 dist/frontend",
     "build:start": "npm run build && npm run start",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -50,6 +50,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "serve": "^14.2.0",
     "typescript": "~5.0.2"
   }
 }
