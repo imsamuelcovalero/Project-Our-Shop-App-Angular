@@ -22,7 +22,9 @@ export class ApiService {
   // private baseURL = process.env['API_URL'] || 'http://localhost:3000';
   private baseURL = environment.API_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('environment.API_URL', environment.API_URL); // Adicionei o console.log aqui
+  }
 
   get<T>(url: string, options?: HttpOptions): Observable<T> {
     return this.http.get<T>(this.baseURL + url, options);

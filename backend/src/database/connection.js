@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const CustomError = require('../errors/CustomError');
 require('dotenv').config();
 
-// console.log('log de teste', process.env.MONGO_URI);
+console.log('log de teste', process.env.MONGODB_URI);
 
 const MONGO_DB_URL = 'mongodb://localhost:27017/mongodb';
 

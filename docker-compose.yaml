@@ -15,18 +15,19 @@ services:
     restart: always # Reinicia o container automaticamente se ele parar
     networks:
       - our_shop_app_network-back-to-front # Adiciona este serviço à rede especificada
-    # depends_on:
-    #   - backend # Este serviço depende do serviço backend
+    depends_on:
+      - backend # Este serviço depende do serviço backend
 
   backend:
     # Nome do serviço de backend
     container_name: our_shop_app_backend # Nome do container Docker backend
     build: ./backend # Caminho para o Dockerfile do backend
     ports:
-      - 3001:3001 # Mapeia a porta 3001 do container para a porta 3001 do host
+      - 3000:3000 # Mapeia a porta 3000 do container para a porta 3000 do host
     working_dir: /app-backend # Define o diretório de trabalho dentro do container
     volumes:
       - ./backend/.docker.env:/app-backend/.env # Mapeia o diretório ./backend/.env do host para o diretório /app-backend/.env do container
+      - ./backend:/app-backend # Mapeia o diretório ./backend do host para o diretório /app-backend do container
     tty: true # Habilita o pseudo-TTY
     stdin_open: true # Mantém o STDIN aberto mesmo se não anexado
     user: "1000:1000" # Define o usuário e grupo do container, foi necessário para o docker executar os scripts do package.json. O usuário e grupo 1000 são os padrões do Linux: id -u <seu_usuario> e id -g <seu_usuario> para ver os seus ids
@@ -39,7 +40,6 @@ services:
       - our_shop_app_network-back-to-bd
     depends_on:
       - mongodb
-      - frontend
         # Este serviço depende do serviço db
         # condition: service_healthy # Só inicia o serviço backend quando o serviço db estiver saudável
     # cap_add:
@@ -55,9 +55,11 @@ services:
     restart: 'always' # Reinicia o container automaticamente se ele parar
     volumes:
       - ./backend/.docker.env:/app-backend/.env # Mapeia o diretório ./backend/.env do host para o diretório /app-backend/.env do container
-    environment:
-      # Variáveis de ambiente para o serviço
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    # env_file:
+    #   - ./backend/.docker.env # Define o arquivo de variáveis de ambiente
+    # environment:
+    #   # Variáveis de ambiente para o serviço
+    #   MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       - our_shop_app_network-back-to-bd # Adiciona este serviço à rede especificada
     cap_add:

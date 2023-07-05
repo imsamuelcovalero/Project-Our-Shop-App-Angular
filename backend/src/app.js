@@ -20,14 +20,14 @@ app.use('/images', express.static(uploadPath));
 
 app.use('/docs', swagger.serve, swagger.setup(swaggerFile));
 
-// servindo arquivos estáticos da pasta dist
-const angularAppPath = path.resolve('../frontend/dist/frontend');
-app.use(express.static(angularAppPath));
+/* servindo arquivos estáticos da pasta dist */
+// const angularAppPath = path.resolve('../frontend/dist/frontend');
+// app.use(express.static(angularAppPath));
 
 app.use(routes);
 
-// adicionar uma rota catchall para servir o index.html do Angular para todas as outras rotas
-app.get('*', (req, res) => res.sendFile(path.resolve(angularAppPath, 'index.html')));
+/* adicionar uma rota catchall para servir o index.html do Angular para todas as outras rotas */
+// app.get('*', (req, res) => res.sendFile(path.resolve(angularAppPath, 'index.html')));
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 

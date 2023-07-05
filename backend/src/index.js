@@ -1,9 +1,11 @@
 /* index.js */
 const app = require('./app');
 require('dotenv').config();
+// console.log('log de teste', process.env.MONGODB_URI);
 require('./database/connection');
 const insertInitialData = require('./models/initialData');
 
+console.log('porta', process.env.PORT, process.env.MONGO_INITDB_ROOT_PASSWORD);
 const PORT = process.env.PORT || 3000;
 
 /* Se quiser utilizar a estrutura de criar uma função para conectar ao banco de dados no arquivo connection.js */

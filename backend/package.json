@@ -7,8 +7,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "npm run build:frontend && nodemon src/index.js",
-    "build:frontend": "cd ../frontend && npm run build",
+    "dev": "nodemon src/index.js",
     "db:reset": "node src/database/dbReset.js",
     "full-dev": "npm run db:reset && npm run dev",
     "test": "mocha src/tests/**/*$NAME*.test.js --exit",
