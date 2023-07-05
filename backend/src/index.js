@@ -4,7 +4,7 @@ require('dotenv').config();
 require('./database/connection');
 const insertInitialData = require('./models/initialData');
 
-const PORT = process.env.APP_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 /* Se quiser utilizar a estrutura de criar uma função para conectar ao banco de dados no arquivo connection.js */
 // const connectToDatabase = require('./models/connection');
