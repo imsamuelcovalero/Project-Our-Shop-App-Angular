@@ -74,7 +74,7 @@ Você pode acessar a documentação da `API` *__online__* ou __localmente__.
 
 ### Acesso Online
 
-A documentação `Swagger` está hospedada e pode ser acessada no seguinte link: [API Documentation](https://seu_endereco_deploy/docs).
+A documentação `Swagger` está hospedada e pode ser acessada no seguinte link: [API Documentation](https://our-shop-app-backend-production.up.railway.app/docs/).
 
 ### Acesso Local
 

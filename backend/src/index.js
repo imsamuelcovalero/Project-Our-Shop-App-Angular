@@ -5,7 +5,6 @@ require('dotenv').config();
 require('./database/connection');
 const insertInitialData = require('./models/initialData');
 
-console.log('porta', process.env.PORT, process.env.MONGO_INITDB_ROOT_PASSWORD);
 const PORT = process.env.PORT || 3000;
 
 /* Se quiser utilizar a estrutura de criar uma função para conectar ao banco de dados no arquivo connection.js */
