@@ -15,8 +15,8 @@ services:
     restart: always # Reinicia o container automaticamente se ele parar
     networks:
       - our_shop_app_network-back-to-front # Adiciona este serviço à rede especificada
-    depends_on:
-      - backend # Este serviço depende do serviço backend
+    # depends_on:
+    #   - backend # Este serviço depende do serviço backend
 
   backend:
     # Nome do serviço de backend
@@ -39,6 +39,7 @@ services:
       - our_shop_app_network-back-to-bd
     depends_on:
       - mongodb
+      - frontend
         # Este serviço depende do serviço db
         # condition: service_healthy # Só inicia o serviço backend quando o serviço db estiver saudável
     # cap_add:
