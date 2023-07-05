@@ -7,6 +7,8 @@ console.log('log de teste API_URL', process.env.API_URL);
 
 const URL_IMG = process.env.API_URL || 'http://localhost:3000';
 
+console.log('log de teste URL_IMG', URL_IMG);
+
 async function insertInitialData() {
   // Inserir usuário administrador
   const adminPassword = 'A1234567';
