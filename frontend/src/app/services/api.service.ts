@@ -18,7 +18,7 @@ interface HttpOptions {
 })
 export class ApiService {
 
-  private baseURL = 'http://localhost:3001';
+  private baseURL = process.env['API_URL'] || 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
