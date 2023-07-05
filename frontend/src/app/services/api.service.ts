@@ -23,6 +23,8 @@ export class ApiService {
   private baseURL = environment.API_URL;
 
   constructor(private http: HttpClient) {
+    console.log('environment.production', environment.production); // Adicionei o console.log aqui
+
     console.log('environment.API_URL', environment.API_URL); // Adicionei o console.log aqui
   }
 
